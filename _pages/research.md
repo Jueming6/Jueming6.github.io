@@ -7,16 +7,16 @@ author_profile: true
 
 Our Safe and resiLient Autonomous decision-Making (SLAM) group at UND focuses on advancing research in three interrelated areas: 
 
-1. reinforcement learning driven UAV operations,
-2. autonomous decision making,
-3. resilient autonomous systems. 
+1. Reinforcement learning driven UAV operations,
+2. Autonomous decision making,
+3. Resilient autonomous systems. 
 
 We integrate artificial intelligence, formal methods, and optimization techniques to enhance the safety, efficiency, and reliability of autonomous systems.
 
 
 
 
-## Multi-agent systems
+## Multi-Agent systems
 
 
 **[Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S0925231223010974)**

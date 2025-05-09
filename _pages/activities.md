@@ -19,6 +19,6 @@ author_profile: true
 
 ## External reviewer
 Transportation Research Part C: Emerging Technologies, IEEE Transactions on Automation Science and Engineering; Knowledge-Based Systems, Computers & Industrial Engineering, Reliability Engineering & System Safety,
-RNeurocomputing, Aerospace, Drones.
+Neurocomputing, Aerospace, Drones.
 
 <!-- **Journals:**  -->
