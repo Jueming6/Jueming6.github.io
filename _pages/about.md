@@ -16,7 +16,7 @@ News
 
 - [01/2025] I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!
 - [09/2024] Our paper "[Reinforcement Learning with Predefined and Inferred Reward Machines in Stochastic Games](https://www.sciencedirect.com/science/article/pii/S092523122400941X)" has been accepted for publication in *Neurocomputing*.
-- [04/2024] Jueming joined the [CARES lab](https://www.tamug.edu/cares/people.html) at Texas A&M University as a postdoctoral researcher! 
+- [04/2024] I am excited to join the [CARES lab](https://www.tamug.edu/cares/people.html) at Texas A&M University as a postdoctoral researcher! 
 - [01/2024] Our paper "[Decentralized Graph-Based Multi-Agent Reinforcement Learning Using Reward Machines](https://www.sciencedirect.com/science/article/pii/S0925231223010974)" has been accepted for publication in *Neurocomputing*.
 - [11/2023] Our paper "[Knowledge-Enhanced Reinforcement Learning for Multi-Machine Integrated Production and Maintenance Scheduling](https://www.sciencedirect.com/science/article/pii/S0360835223006551)" has been accepted for publication in *Computers & Industrial Engineering*.
 - [07/2023] Our paper "[Reinforcement Learning with Reward Machines in Stochastic Games](https://ebooks.iospress.nl/doi/10.3233/FAIA230380)" has been accepted to the 2023 European Conference on Artificial Intelligence (acceptance rate **24%**).
