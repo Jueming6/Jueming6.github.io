@@ -16,7 +16,7 @@ We integrate artificial intelligence, formal methods, and optimization technique
 
 
 
-## Multi-Agent systems
+## Multi-Agent Systems
 
 
 **[Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S0925231223010974)**
