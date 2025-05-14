@@ -5,4 +5,4 @@ permalink: /team/
 author_profile: true
 ---
 
-We are looking for new Ph.D. students to join the group!
+We are looking for new students to join the group! If you are interested, please email me at jueming.hu@und.edu
