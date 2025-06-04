@@ -27,6 +27,3 @@ News
 
 
 
-% git add . 
-% git commit -m "update 05092025"
-% git push origin main
