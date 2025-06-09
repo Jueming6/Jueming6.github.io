@@ -24,7 +24,7 @@ We integrate artificial intelligence, formal methods, and optimization technique
 To learn complex temporally extended tasks, we use a reward machine (RM) to encode each agent’s task and expose reward function internal structures.  We propose a decentralized learning algorithm to tackle computational complexity, called decentralized graph-based reinforcement learning using reward machines (DGRM), that equips each agent with a localized policy, allowing agents to make decisions independently based on the information available to the agents. 
 
 <figure>
-  <img src="RGDM.pdf" alt="cooperative example" style="max-width: 500px; width: 100%;"/>
+  <img src="RGDM.png" alt="cooperative example" style="max-width: 500px; width: 100%;"/>
   <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
 </figure>
 
@@ -35,11 +35,11 @@ We introduce Q-learning with Reward Machines for Stochastic Games (QRM-SG), wher
 
 <div style="display: flex; justify-content: left; gap: 20px;">
   <figure style="margin: 0;">
-    <img src="noncoop.png" alt="noncoop1" style="max-width: 100%; height: auto; width: 250px;">
+    <img src="noncoop.png" alt="noncoop1" style="max-width: 110%; height: auto; width: 250px;">
     <!-- <figcaption style="text-align: center;">Figure 1</figcaption> -->
   </figure>
   <figure style="margin: 0;">
-    <img src="QRMSGflowchart.pdf" alt="noncoop2 example" style="max-width: 100%; height: auto; width: 750px;">
+    <img src="QRMSGflowchart.png" alt="noncoop2 example" style="max-width: 80%; height: auto; width: 750px;">
     <!-- <figcaption style="text-align: center;">Figure 2</figcaption> -->
   </figure>
 </div>
@@ -118,6 +118,6 @@ A generic model for maintenance scheduling is introduced, in which the maintenan
 We propose a novel method called Knowledge Enhanced Reinforcement Learning (KERL), which adopts a centralized multi-agent actor-critic architecture. KERL enhances the performance of Reinforcement Learning (RL) for multi-machine production and maintenance scheduling by leveraging the prior knowledge of the constraint to determine the production decisions and handle the cooperation among machines in the system.
 
 <figure>
-  <img src="KERL.pdf" alt="kerl example" style="max-width: 600px; width: 100%;"/>
+  <img src="KERL.png" alt="kerl example" style="max-width: 600px; width: 80%;"/>
   <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
 </figure>
