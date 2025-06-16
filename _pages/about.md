@@ -13,7 +13,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
 
 News
 ======
-
+- [06/2025] Our paper "[Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks](https://ieeexplore.ieee.org/document/11032088)" has been accepted for publication in *IEEE Internet of Things Journal*.
 - [01/2025] I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!
 - [09/2024] Our paper "[Reinforcement Learning with Predefined and Inferred Reward Machines in Stochastic Games](https://www.sciencedirect.com/science/article/pii/S092523122400941X)" has been accepted for publication in *Neurocomputing*.
 - [04/2024] I am excited to join the [CARES lab](https://www.tamug.edu/cares/people.html) at Texas A&M University as a postdoctoral researcher! 
