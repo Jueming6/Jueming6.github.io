@@ -1,13 +1,15 @@
 ---
 permalink: /
 #title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
-title: "About me"
+#title: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
+About
+====
 Welcome! I am an assistant professor in the Department of Mechanical Engineering at the University of North Dakota (UND). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as a B.S. in Mechanical Engineering from Southeast University, China. Before joining UND, I was a postdoctoral researcher at Texas A&M University and Arizona State University.
 
 
