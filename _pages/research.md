@@ -11,48 +11,27 @@ Our Safe and resiLient Autonomous decision-Making (SLAM) group at UND focuses on
 2. Autonomous decision making,
 3. Resilient autonomous systems. 
 
-We integrate artificial intelligence, formal methods, and optimization techniques to enhance the safety, efficiency, and reliability of autonomous systems.
+We integrate artificial intelligence, formal methods, and optimization techniques to enhance the resilience, safety, efficiency, and reliability of cyber-physical systems.
 
+## Resilience
 
+**[UAV GPS spoofing attacks](https://ieeexplore.ieee.org/abstract/document/11032088)**
 
-
-## Multi-Agent Systems
-
-
-**[Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S0925231223010974)**
-
-To learn complex temporally extended tasks, we use a reward machine (RM) to encode each agent’s task and expose reward function internal structures.  We propose a decentralized learning algorithm to tackle computational complexity, called decentralized graph-based reinforcement learning using reward machines (DGRM), that equips each agent with a localized policy, allowing agents to make decisions independently based on the information available to the agents. 
-
-<figure>
-  <img src="RGDM.png" alt="cooperative example" style="max-width: 500px; width: 100%;" loading="lazy"/>
-  <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
-</figure>
-
-
-**[Non-Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S092523122400941X)**
-
-We introduce Q-learning with Reward Machines for Stochastic Games (QRM-SG), where RMs are predefined and available to agents. QRM-SG learns each agent’s best-response policy at Nash equilibrium by defining the Q-function in augmented state space that integrates the stochastic game and RM states. The Lemke-Howson method is utilized to compute the best-response policies for the stage game defined by the current Q-functions at each time step. Subsequently, we explore a more challenging scenario where RMs are unavailable and propose Multi-Agent Reinforcement learning with Concurrent High-level knowledge inference (MARCH). MARCH uses automata learning to learn RMs iteratively and combines this process with QRM-SG for learning the best-response policies. 
+UAV operational effectiveness heavily depends on the Global Positioning System (GPS), which provides real-time navigation essential for mission success. UAV reliance on GPS introduces potential vulnerabilities to spoofing attacks, where adversaries transmit fictitious signals to disrupt navigation. We propose RLDM-UAV (Reinforcement Learning-driven integrated Detection and Mitigation of UAV GPS spoofing attacks), a novel reinforcement learning framework integrating detection and mitigation to ensure resilient UAV navigation. 
 
 <div style="display: flex; justify-content: left; gap: 20px;">
   <figure style="margin: 0;">
-    <img src="noncoop.png" alt="noncoop1" style="max-width: 110%; height: auto; width: 250px;" loading="lazy">
+    <img src="spoofing1.png" alt="spoofing1 example" style="max-width: 100%; height: auto; width: 450px;" loading="lazy">
     <!-- <figcaption style="text-align: center;">Figure 1</figcaption> -->
   </figure>
   <figure style="margin: 0;">
-    <img src="QRMSGflowchart.png" alt="noncoop2 example" style="max-width: 80%; height: auto; width: 750px;" loading="lazy">
+    <img src="spoofing2.png" alt="pspoofing2 example" style="max-width: 100%; height: auto; width: 550px;" loading="lazy">
     <!-- <figcaption style="text-align: center;">Figure 2</figcaption> -->
   </figure>
 </div>
 
-<!-- 
 
-<figure>
-  <img src="QRMSGflowchart.pdf" alt="Non-cooperative example" style="max-width: 800px; width: 100%;"/>
-  <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
-<!-- </figure> --> 
-
-
-## UAV Operations
+## Safety
 
 **[Collision Avoidance](https://ieeexplore.ieee.org/abstract/document/9868001)**
 
@@ -100,8 +79,47 @@ develops an anisotropic operational safety bound.
 
 
 
+## Efficiency 
 
-## Industrial AI
+
+**[Multi-Agent Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S0925231223010974)**
+
+To learn complex temporally extended tasks, we use a reward machine (RM) to encode each agent’s task and expose reward function internal structures.  We propose a decentralized learning algorithm to tackle computational complexity, called decentralized graph-based reinforcement learning using reward machines (DGRM), that equips each agent with a localized policy, allowing agents to make decisions independently based on the information available to the agents. 
+
+<figure>
+  <img src="RGDM.png" alt="cooperative example" style="max-width: 500px; width: 100%;" loading="lazy"/>
+  <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
+</figure>
+
+
+**[Multi-Agent Non-Cooperative Systems](https://www.sciencedirect.com/science/article/pii/S092523122400941X)**
+
+We introduce Q-learning with Reward Machines for Stochastic Games (QRM-SG), where RMs are predefined and available to agents. QRM-SG learns each agent’s best-response policy at Nash equilibrium by defining the Q-function in augmented state space that integrates the stochastic game and RM states. The Lemke-Howson method is utilized to compute the best-response policies for the stage game defined by the current Q-functions at each time step. Subsequently, we explore a more challenging scenario where RMs are unavailable and propose Multi-Agent Reinforcement learning with Concurrent High-level knowledge inference (MARCH). MARCH uses automata learning to learn RMs iteratively and combines this process with QRM-SG for learning the best-response policies. 
+
+<div style="display: flex; justify-content: left; gap: 20px;">
+  <figure style="margin: 0;">
+    <img src="noncoop.png" alt="noncoop1" style="max-width: 110%; height: auto; width: 250px;" loading="lazy">
+    <!-- <figcaption style="text-align: center;">Figure 1</figcaption> -->
+  </figure>
+  <figure style="margin: 0;">
+    <img src="QRMSGflowchart.png" alt="noncoop2 example" style="max-width: 80%; height: auto; width: 750px;" loading="lazy">
+    <!-- <figcaption style="text-align: center;">Figure 2</figcaption> -->
+  </figure>
+</div>
+
+<!-- 
+
+<figure>
+  <img src="QRMSGflowchart.pdf" alt="Non-cooperative example" style="max-width: 800px; width: 100%;"/>
+  <!-- <figcaption>Figure: Cooperative control in multi-agent UAV swarms.</figcaption> -->
+<!-- </figure> --> 
+
+
+
+
+
+
+## Reliability
 
 **[Maintenance Scheduling](https://www.sciencedirect.com/science/article/pii/S0952197621004565)**
 

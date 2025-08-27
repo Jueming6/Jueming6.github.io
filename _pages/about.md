@@ -1,7 +1,7 @@
 ---
 permalink: /
 #title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
-#title: "About me"
+title: "About me"
 author_profile: true
 redirect_from: 
   - /about/
@@ -14,6 +14,8 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
 
 News
 ======
+- [08/2025] One paper has been accepted to AIAA SciTech Forum 2026. 
+- [08/2025] Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM group!
 - [06/2025] Our paper "[Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks](https://ieeexplore.ieee.org/document/11032088)" has been accepted for publication in *IEEE Internet of Things Journal*.
 - [01/2025] I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!
 - [09/2024] Our paper "[Reinforcement Learning with Predefined and Inferred Reward Machines in Stochastic Games](https://www.sciencedirect.com/science/article/pii/S092523122400941X)" has been accepted for publication in *Neurocomputing*.
