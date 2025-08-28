@@ -12,20 +12,95 @@ redirect_from:
 Welcome! I am an assistant professor in the Department of Mechanical Engineering at the University of North Dakota (UND). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as a B.S. in Mechanical Engineering from Southeast University, China. Before joining UND, I was a postdoctoral researcher at Texas A&M University and Arizona State University.
 
 
-News
-======
-- [08/2025] One paper has been accepted to AIAA SciTech Forum 2026. 
-- [08/2025] Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM group!
-- [06/2025] Our paper "[Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks](https://ieeexplore.ieee.org/document/11032088)" has been accepted for publication in *IEEE Internet of Things Journal*.
-- [01/2025] I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!
-- [09/2024] Our paper "[Reinforcement Learning with Predefined and Inferred Reward Machines in Stochastic Games](https://www.sciencedirect.com/science/article/pii/S092523122400941X)" has been accepted for publication in *Neurocomputing*.
-- [04/2024] I am excited to join the [CARES lab](https://www.tamug.edu/cares/people.html) at Texas A&M University as a postdoctoral researcher! 
-- [01/2024] Our paper "[Decentralized Graph-Based Multi-Agent Reinforcement Learning Using Reward Machines](https://www.sciencedirect.com/science/article/pii/S0925231223010974)" has been accepted for publication in *Neurocomputing*.
-- [11/2023] Our paper "[Knowledge-Enhanced Reinforcement Learning for Multi-Machine Integrated Production and Maintenance Scheduling](https://www.sciencedirect.com/science/article/pii/S0360835223006551)" has been accepted for publication in *Computers & Industrial Engineering*.
-- [07/2023] Our paper "[Reinforcement Learning with Reward Machines in Stochastic Games](https://ebooks.iospress.nl/doi/10.3233/FAIA230380)" has been accepted to the 2023 European Conference on Artificial Intelligence (acceptance rate **24%**).
-- [08/2022] Our paper "[Obstacle Avoidance for UAS in Continuous Action Space Using Deep Reinforcement Learning](https://ieeexplore.ieee.org/abstract/document/9868001)" has been accepted for publication in *IEEE Access*.
-- [03/2022] Our paper "[Optimal Maintenance Scheduling Under Uncertainties Using Linear Programming-Enhanced Reinforcement Learning](https://www.sciencedirect.com/science/article/pii/S0952197621004565)" has been accepted for publication in *Engineering Applications of Artificial Intelligence*.
-- [03/2020] Our paper "[Probabilistic Risk-Based Operational Safety Bound for Rotary-Wing Unmanned Aircraft Systems Traffic Management](https://arc.aiaa.org/doi/full/10.2514/1.I010786)" has been accepted for publication in *Journal of Aerospace Information Systems*.
+# News
+
+<div class="tl-wrap">
+  <div class="tl-year">2025</div>
+  <ul class="tl start-top">
+    <li>
+      <div class="desc">One paper has been accepted to AIAA SciTech Forum 2026.</div>
+      <div class="month">August</div>
+    </li>
+    <li>
+      <div class="desc">Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM group!</div>
+      <div class="month">August</div>
+    </li>
+    <li>
+      <div class="desc">Our paper "<a href="https://ieeexplore.ieee.org/document/11032088">Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks</a>" has been accepted for publication in <em>IEEE Internet of Things Journal</em>.</div>
+      <div class="month">June</div>
+    </li>
+    <li>
+      <div class="desc">I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!</div>
+      <div class="month">January</div>
+    </li>
+  </ul>
+</div>
+
+
+
+  <div class="tl-wrap">
+    <div class="tl-year">2024</div>
+    <ul class="tl continue">
+      <li>
+        <div class="desc">Our paper "<a href="https://www.sciencedirect.com/science/article/pii/S092523122400941X">Reinforcement Learning with Predefined and Inferred Reward Machines in Stochastic Games</a>" has been accepted for publication in <em>Neurocomputing</em>.</div>
+        <div class="month">September</div>
+      </li>
+      <li>
+        <div class="desc">I am excited to join the <a href="https://www.tamug.edu/cares/people.html">CARES lab</a> at Texas A&amp;M University as a postdoctoral researcher!</div>
+        <div class="month">April</div>
+      </li>
+      <li>
+        <div class="desc">Our paper "<a href="https://www.sciencedirect.com/science/article/pii/S0925231223010974">Decentralized Graph-Based Multi-Agent Reinforcement Learning Using Reward Machines</a>" has been accepted for publication in <em>Neurocomputing</em>.</div>
+        <div class="month">January</div>
+      </li>
+    </ul>
+  </div>
+
+<details class="tl-more" markdown="1">
+  <summary>
+    <span class="caret"></span>
+    <span class="label more">More</span>
+    <span class="label less">Less</span>
+  </summary>
+  
+  <div class="tl-wrap">
+    <div class="tl-year">2023</div>
+    <ul class="tl continue">
+      <li>
+        <div class="desc">Our paper "<a href="https://www.sciencedirect.com/science/article/pii/S0360835223006551">Knowledge-Enhanced Reinforcement Learning for Multi-Machine Integrated Production and Maintenance Scheduling</a>" has been accepted for publication in <em>Computers &amp; Industrial Engineering</em>.</div>
+        <div class="month">November</div>
+      </li>
+      <li>
+        <div class="desc">Our paper "<a href="https://ebooks.iospress.nl/doi/10.3233/FAIA230380">Reinforcement Learning with Reward Machines in Stochastic Games</a>" has been accepted to the 2023 European Conference on Artificial Intelligence (acceptance rate <b>24%</b>).</div>
+        <div class="month">July</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tl-wrap">
+    <div class="tl-year">2022</div>
+    <ul class="tl continue">
+      <li>
+        <div class="desc">Our paper "<a href="https://ieeexplore.ieee.org/abstract/document/9868001">Obstacle Avoidance for UAS in Continuous Action Space Using Deep Reinforcement Learning</a>" has been accepted for publication in <em>IEEE Access</em>.</div>
+        <div class="month">August</div>
+      </li>
+      <li>
+        <div class="desc">Our paper "<a href="https://www.sciencedirect.com/science/article/pii/S0952197621004565">Optimal Maintenance Scheduling Under Uncertainties Using Linear Programming-Enhanced Reinforcement Learning</a>" has been accepted for publication in <em>Engineering Applications of Artificial Intelligence</em>.</div>
+        <div class="month">March</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tl-wrap">
+    <div class="tl-year">2020</div>
+    <ul class="tl continue">
+      <li>
+        <div class="desc">Our paper "<a href="https://arc.aiaa.org/doi/full/10.2514/1.I010786">Probabilistic Risk-Based Operational Safety Bound for Rotary-Wing Unmanned Aircraft Systems Traffic Management</a>" has been accepted for publication in <em>Journal of Aerospace Information Systems</em>.</div>
+        <div class="month">March</div>
+      </li>
+    </ul>
+  </div>
+</details>
 
 
 

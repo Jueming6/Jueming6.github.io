@@ -8,6 +8,8 @@
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
 
+
+
 @import
     "vendor/breakpoint/breakpoint",
 
@@ -41,3 +43,132 @@
     "vendor/font-awesome/brands",
     "vendor/magnific-popup/magnific-popup"
 ;
+
+
+/* ===== Compact Timeline with continuous line + More/Less ===== */
+:root{
+  --tl-line:  #f1f3f5; /* vertical line */
+  --tl-accent:#aeb4bb; /* shared grey for dot, month, year, toggle */
+}
+
+/* Grid: [year] [timeline] */
+.tl-wrap{
+  display:grid;
+  grid-template-columns:62px 1fr; /* year gutter + events */
+  column-gap:8px;
+  align-items:start;
+  margin:0 0 .70rem 0;
+}
+
+/* Year label (same grey as dot/month) */
+.tl-year{
+  font-weight:700;
+  font-size:1.2rem;
+  line-height:1.2;
+  text-align:right;
+  padding-right:6px;
+  color:var(--tl-accent);
+}
+
+/* Timeline column + vertical line */
+.tl{
+  list-style:none;
+  margin:0;
+  padding:0;
+  position:relative;
+}
+.tl::before{
+  content:"";
+  position:absolute;
+  left:12px;       /* line X inside timeline column */
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--tl-line);
+}
+
+/* Items: compact spacing + small indent from dot to text */
+.tl li{
+  position:relative;
+  padding:0 0 .26rem 1.9rem; /* tighter vertical spacing */
+}
+.tl li::before{
+  /* filled dot centered over 2px line at x=12px (10px dot => ~7px; 8px for optical center) */
+  content:"";
+  position:absolute;
+  left:8px;
+  top:.22rem;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--tl-accent);
+  box-shadow:0 0 0 2px #fff; /* thin rim so dot pops on light bg */
+}
+.tl .desc{ margin:0 }
+.tl .month{
+  margin:.10rem 0 0;
+  color:var(--tl-accent);
+  font-weight:600;
+  font-size:.9rem;
+}
+
+/* Top (current) year: remove short line above first dot */
+.tl.start-top::before{ top:.55rem; }
+
+/* Following years: extend line upward to visually connect to previous list */
+.tl.continue::before{ top:-1.15rem; }
+
+/* ===== More/Less toggle (line drawn through entire details block) ===== */
+details.tl-more{
+  position:relative;
+  margin:.03rem 0 0;
+  padding:0;
+}
+details.tl-more::before{
+  /* vertical line segment that passes behind the summary and older years */
+  content:"";
+  position:absolute;
+  left: calc(62px + 8px + 12px); /* year gutter + grid gap + line inset */
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--tl-line);
+}
+details.tl-more > summary{
+  list-style:none;
+  cursor:pointer;
+  color:var(--tl-accent);
+  font-weight:600;
+  margin-left:.15rem;
+  margin-bottom:.14rem;  /* keeps toggle close to next year */
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+}
+details.tl-more > summary::-webkit-details-marker{ display:none; }
+details.tl-more > summary .label.less{ display:none; }
+details.tl-more[open] > summary .label.more{ display:none; }
+details.tl-more[open] > summary .label.less{ display:inline; }
+details.tl-more > summary .caret::before{ content:"▸"; color:var(--tl-accent); }
+details.tl-more[open] > summary .caret::before{ content:"▾"; }
+
+/* Optional: sticky year on long lists
+.tl-year{ position:sticky; top:64px; background:transparent; }
+*/
+
+/* Dark mode harmony */
+@media (prefers-color-scheme: dark){
+  :root{
+    --tl-line:#33373b;
+    --tl-accent:#aeb4bb;
+  }
+  .tl li::before{ box-shadow:0 0 0 2px #0b0c0e; }
+}
+
+/* Make year text the same color as section titles (e.g., "News", "About Me") */
+.tl-year {
+  color: inherit; /* inherits the default text color, same as headings */
+}
+
+
+
