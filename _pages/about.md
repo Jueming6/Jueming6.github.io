@@ -18,7 +18,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
   <div class="tl-year">2025</div>
   <ul class="tl start-top">
     <li>
-      <div class="desc">Our paper "Trustworthy Cyber-Resilient Reinforcement Learning for Secure Navigation under Adversarial Attack" has received the <strong>Best Paper Award</strong> at 2025 IEEE Cyber Awareness & Research Symposium (CARS)!</div>
+      <div class="desc">Our paper "Trustworthy Cyber-Resilient Reinforcement Learning for Secure Navigation under Adversarial Attack" has received the <strong>Best Paper Award</strong> at <em>2025 IEEE Cyber Awareness & Research Symposium (CARS)</em>!</div>
       <div class="month">November</div>
     </li>
     <li>
