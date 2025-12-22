@@ -18,7 +18,11 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
   <div class="tl-year">2025</div>
   <ul class="tl start-top">
     <li>
-      <div class="desc">One paper has been accepted to AIAA SciTech Forum 2026.</div>
+      <div class="desc">Our paper "Trustworthy Cyber-Resilient Reinforcement Learning for Secure Navigation under Adversarial Attack" has received the <strong>Best Paper Award</strong> at 2025 IEEE Cyber Awareness & Research Symposium (CARS)!</div>
+      <div class="month">November</div>
+    </li>
+    <li>
+      <div class="desc">One paper has been accepted to <em>AIAA SciTech Forum 2026</em>.</div>
       <div class="month">August</div>
     </li>
     <li>
@@ -28,6 +32,10 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
     <li>
       <div class="desc">Our paper "<a href="https://ieeexplore.ieee.org/document/11032088">Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks</a>" has been accepted for publication in <em>IEEE Internet of Things Journal</em>.</div>
       <div class="month">June</div>
+    </li>
+    <li>
+      <div class="desc">One paper has been accepted to <em>IEEE MWSCAS 2025</em>.</div>
+      <div class="month">May</div>
     </li>
     <li>
       <div class="desc">I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!</div>
