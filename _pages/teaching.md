@@ -8,6 +8,7 @@ author_profile: true
 ## University of North Dakota
 
 
-Spring 2025  
+Spring 
 - **AE 424 / ME 590**: *Flight Dynamics and Control*
+- **ME / EE 590**: *Advanced System Modeling, Dynamics and Control*
 
