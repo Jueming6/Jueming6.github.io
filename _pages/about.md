@@ -13,6 +13,16 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
 
 
 # News
+<div class="tl-wrap">
+  <div class="tl-year">2026</div>
+  <ul class="tl start-top">
+    <li>
+      <div class="desc">Dr. Hu (<strong>PI</strong>) received the <strong>Early Career Scholars Program</strong> award from UND!</div>
+      <div class="month">January</div>
+    </li>  
+  </ul>
+  </div>
+
 
 <div class="tl-wrap">
   <div class="tl-year">2025</div>
@@ -38,7 +48,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
       <div class="month">May</div>
     </li>
     <li>
-      <div class="desc">I am excited to join the Department of Mechanical Engineering at the University of North Dakota as an assistant professor, starting in Jan 2025!</div>
+      <div class="desc">Dr. Hu joined the <a href="https://campus.und.edu/directory/jueming.hu">Department of Mechanical Engineering at the University of North Dakota</a> as an assistant professor!</div>
       <div class="month">January</div>
     </li>
   </ul>
@@ -54,7 +64,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
         <div class="month">September</div>
       </li>
       <li>
-        <div class="desc">I am excited to join the <a href="https://www.tamug.edu/cares/people.html">CARES lab</a> at Texas A&amp;M University as a postdoctoral researcher!</div>
+        <div class="desc">Dr. Hu joined the <a href="https://www.tamug.edu/cares/people.html">CARES lab</a> at Texas A&amp;M University as a postdoctoral researcher!</div>
         <div class="month">April</div>
       </li>
       <li>
