@@ -6,6 +6,8 @@ author_profile: true
 ---
 You can find my papers on my [Google Scholar](https://scholar.google.com/citations?hl=en&user=g78m1UEAAAAJ&view_op=list_works&sortby=pubdate).
 
+(**\*** represents supervised students)
+
 ## Journal papers
 
 1. **Reinforcement Learning Driven Integrated Detection and Mitigation of UAV GPS Spoofing Attacks**  
@@ -42,7 +44,11 @@ You can find my papers on my [Google Scholar](https://scholar.google.com/citatio
 
 ## Conference papers
 
-1. **Reinforcement Learning With Reward Machines in Stochastic Games**  
+1. **Deep Q-Network With Lagrangian Relaxation for Autonomous Aircraft Landing**<br>
+   \[[Link](https://www.researchgate.net/publication/399870576_Deep_Q-Network_with_Lagrangian_Relaxation_for_Autonomous_Aircraft_Landing)\]<br>
+   Musabbir Al Momit **\***, Wen Jiang, Bilal Zahid Hussain, Mohammad Ammar, Sajan Bhujel, Yutian Pang, Irfan Khan, Tingjun Lei, and **Jueming Hu**. In *AIAA SCITECH 2026 Forum*, p. 1983. 2026.
+
+2. **Reinforcement Learning With Reward Machines in Stochastic Games**  
    \[[Link](https://ebooks.iospress.nl/doi/10.3233/FAIA230380)\]<br>
    **Jueming Hu**, Jean-Raphaël Gaglione, Yanze Wang, Zhe Xu, Ufuk Topcu, and Yongming Liu. "Reinforcement learning with reward machines in stochastic games." In *ECAI 2023*, pp. 1068-1075. IOS Press, 2023. (Acceptance rate **24%**)
 
