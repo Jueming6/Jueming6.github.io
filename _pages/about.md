@@ -32,7 +32,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
       <div class="month">November</div>
     </li>
     <li>
-      <div class="desc">One paper has been accepted to <em>AIAA SciTech Forum 2026</em>.</div>
+      <div class="desc">One paper "Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing" has been accepted to <em>AIAA SciTech Forum 2026</em>.</div>
       <div class="month">August</div>
     </li>
     <li>

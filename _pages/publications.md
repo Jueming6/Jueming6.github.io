@@ -46,7 +46,7 @@ You can find my papers on my [Google Scholar](https://scholar.google.com/citatio
 
 1. **Deep Q-Network With Lagrangian Relaxation for Autonomous Aircraft Landing**<br>
    \[[Link](https://www.researchgate.net/publication/399870576_Deep_Q-Network_with_Lagrangian_Relaxation_for_Autonomous_Aircraft_Landing)\]<br>
-   Musabbir Al Momit **\***, Wen Jiang, Bilal Zahid Hussain, Mohammad Ammar, Sajan Bhujel, Yutian Pang, Irfan Khan, Tingjun Lei, and **Jueming Hu**. In *AIAA SCITECH 2026 Forum*, p. 1983. 2026.
+   Musabbir Al Momit**\***, Wen Jiang, Bilal Zahid Hussain, Mohammad Ammar, Sajan Bhujel, Yutian Pang, Irfan Khan, Tingjun Lei, and **Jueming Hu**. In *AIAA SCITECH 2026 Forum*, p. 1983. 2026.
 
 2. **Reinforcement Learning With Reward Machines in Stochastic Games**  
    \[[Link](https://ebooks.iospress.nl/doi/10.3233/FAIA230380)\]<br>
