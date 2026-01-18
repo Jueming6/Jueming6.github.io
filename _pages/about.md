@@ -17,6 +17,10 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
     <li>
+      <div class="desc">Dr. Hu presented our paper "Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing" at the <em>AIAA SciTech Forum 2026</em>.</div>
+      <div class="month">January</div>
+    </li>
+    <li>
       <div class="desc">Dr. Hu (<strong>PI</strong>) received the <strong>Early Career Scholars Program</strong> award from UND!</div>
       <div class="month">January</div>
     </li>  
@@ -30,10 +34,6 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
     <li>
       <div class="desc">Our paper "Trustworthy Cyber-Resilient Reinforcement Learning for Secure Navigation under Adversarial Attack" has received the <strong>Best Paper Award</strong> at <em>2025 IEEE Cyber Awareness & Research Symposium (CARS)</em>!</div>
       <div class="month">November</div>
-    </li>
-    <li>
-      <div class="desc">One paper "Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing" has been accepted to <em>AIAA SciTech Forum 2026</em>.</div>
-      <div class="month">August</div>
     </li>
     <li>
       <div class="desc">Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM group!</div>
