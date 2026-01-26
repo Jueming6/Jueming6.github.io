@@ -1,21 +1,30 @@
 ---
 permalink: /
+layout: archive
 #title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
-title: "About me"
+title: "Safe and resiLient Autonomous decision-Making (SLAM) Lab"
 author_profile: true
+classes: wide
 redirect_from: 
   - /about/
   - /about.html
 ---
 
 
-Welcome! I am an assistant professor in the Department of Mechanical Engineering at the University of North Dakota (UND). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as a B.S. in Mechanical Engineering from Southeast University, China. Before joining UND, I was a postdoctoral researcher at Texas A&M University and Arizona State University.
+## Faculty (Jueming Hu)
 
+<p style="text-align: justify;">
+I am an assistant professor in the Department of Mechanical Engineering at the University of North Dakota (UND). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as a B.S. in Mechanical Engineering from Southeast University, China. Before joining UND, I was a postdoctoral researcher at Texas A&M University and Arizona State University.
+</p>
 
-# News
+## News
 <div class="tl-wrap">
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
+    <li>
+      <div class="desc">Welcome Minseok (undergraduate exchange student, Hanyang University) to the UND SLAM Lab for Spring 2026!</div>
+      <div class="month">January</div>
+    </li>
     <li>
       <div class="desc">Dr. Hu presented our paper "Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing" at the <em>AIAA SciTech Forum 2026</em>.</div>
       <div class="month">January</div>
@@ -36,7 +45,7 @@ Welcome! I am an assistant professor in the Department of Mechanical Engineering
       <div class="month">November</div>
     </li>
     <li>
-      <div class="desc">Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM group!</div>
+      <div class="desc">Welcome new Master's student Sajan and PhD student Musabbir to the UND SLAM Lab!</div>
       <div class="month">August</div>
     </li>
     <li>
