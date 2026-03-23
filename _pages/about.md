@@ -22,15 +22,27 @@ I am an assistant professor in the Department of Mechanical Engineering at the U
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
     <li>
-      <div class="desc">Welcome Minseok (undergraduate exchange student, Hanyang University) to the UND SLAM Lab for Spring 2026!</div>
+      <div class="desc">SLAM Lab member Sajan received a <strong>Conference Travel grant</strong> from <em>School of Graduate Studies at UND</em>!</div>
+      <div class="month">March</div>
+    </li>
+    <li>
+      <div class="desc">Dr. Hu delivered a seminar titled "AI-Assisted UAV Operations for Safe, Resilient, and Efficient Autonomy" as part of the <em>AIAA Intelligent Systems Technical Committee (ISTC) Technical Seminar Series</em>.</div>
+      <div class="month">March</div>
+    </li>
+    <li>
+      <div class="desc">Welcome Hanseon (undergraduate exchange student, Konkuk University) to the SLAM Lab for Spring 2026!</div>
+      <div class="month">March</div>
+    </li>
+    <li>
+      <div class="desc">Welcome Minseok (undergraduate exchange student, Hanyang University) to the SLAM Lab for Spring 2026!</div>
       <div class="month">January</div>
     </li>
     <li>
-      <div class="desc">Dr. Hu presented our paper "Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing" at the <em>AIAA SciTech Forum 2026</em>.</div>
+      <div class="desc">Dr. Hu presented our paper "<a href="https://www.researchgate.net/publication/399870576_Deep_Q-Network_with_Lagrangian_Relaxation_for_Autonomous_Aircraft_Landing#fullTextFileContent">Deep Q-Network with Lagrangian Relaxation for Autonomous Aircraft Landing</a>" at the <em>AIAA SciTech Forum 2026</em>.</div>
       <div class="month">January</div>
     </li>
     <li>
-      <div class="desc">Dr. Hu (<strong>PI</strong>) received the <strong>Early Career Scholars Program</strong> award from UND!</div>
+      <div class="desc">Dr. Hu (<strong>PI</strong>) received the <strong>Early Career Scholars Program</strong> award from <em>UND</em>!</div>
       <div class="month">January</div>
     </li>  
   </ul>

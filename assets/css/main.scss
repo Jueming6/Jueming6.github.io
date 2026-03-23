@@ -170,5 +170,19 @@ details.tl-more[open] > summary .caret::before{ content:"▾"; }
   color: inherit; /* inherits the default text color, same as headings */
 }
 
+// /* ===== Force wider content ===== */
+// @media (min-width: 64em) {
+//   .page {
+//     width: calc(100% - 260px) !important;
+//     max-width: 1000px !important;
+//   }
 
+//   .page__inner-wrap,
+//   .archive,
+//   .archive__item,
+//   .page__content {
+//     max-width: 1050px !important;
+//     width: 100% !important;
+//   }
+// }
 
