@@ -22,6 +22,10 @@ I am an assistant professor in the Department of Mechanical Engineering at the U
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
     <li>
+      <div class="desc">Dr. Hu delivered a virtual guest lecture for CompE 696 - AI for Unmanned Systems at <em>San Diego State University</em>.</div>
+      <div class="month">March</div>
+    </li> 
+    <li>
       <div class="desc">SLAM Lab member Sajan received a <strong>Conference Travel grant</strong> from <em>School of Graduate Studies at UND</em>!</div>
       <div class="month">March</div>
     </li>
