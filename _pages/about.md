@@ -49,6 +49,10 @@ I am an assistant professor in the Department of Mechanical Engineering at the U
       <div class="desc">Dr. Hu (<strong>PI</strong>) received the <strong>Early Career Scholars Program</strong> award from <em>UND</em>!</div>
       <div class="month">January</div>
     </li>  
+    <li>
+      <div class="desc">Dr. Hu (<strong>Co-PI</strong>) received the <strong>Early Career Scholars Program</strong> award from <em>UND</em>!</div>
+      <div class="month">January</div>
+    </li>
   </ul>
   </div>
 
@@ -145,6 +149,42 @@ I am an assistant professor in the Department of Mechanical Engineering at the U
   </div>
 </details>
 
+---
 
+<div id="site-stats" style="margin: 1.5em 0;">
+  <h3 style="margin-bottom: 0.8em;">Visitor Stats <small style="font-weight:normal; color:#999; font-size:0.7em;">— Google Search clicks</small></h3>
+  <div style="display:flex; gap:2.5em; margin-bottom:1.2em; flex-wrap:wrap; align-items:baseline;">
+    <div><span id="stat-clicks" style="font-size:1.3em; font-weight:700; color:#c0392b;"></span><span style="font-size:0.85em; color:#777; margin-left:0.3em;">clicks</span></div>
+    <div><span id="stat-countries" style="font-size:1.3em; font-weight:700; color:#27ae60;"></span><span style="font-size:0.85em; color:#777; margin-left:0.3em;">countries</span></div>
+  </div>
+  <div id="visitor-map" style="height:280px; border-radius:6px; margin-bottom:1.2em; border:1px solid #ddd;"></div>
+  <p id="stats-updated" style="font-size:0.72em; color:#bbb; margin:0;"></p>
+</div>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+var GSC = {{ site.data.gsc_stats | jsonify }};
+(function() {
+  document.getElementById('stat-clicks').textContent    = GSC.total_clicks;
+  document.getElementById('stat-countries').textContent = GSC.total_countries;
+  document.getElementById('stats-updated').textContent  = 'Source: Google Search Console \u00b7 updated ' + GSC.updated;
 
+  var map = L.map('visitor-map', {
+    center: [25, 10], zoom: 2,
+    scrollWheelZoom: false, attributionControl: true
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> \u00a9 <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  GSC.countries.forEach(function(c) {
+    L.circleMarker([c.lat, c.lng], {
+      radius: Math.max(5, Math.sqrt(c.clicks) * 4),
+      fillColor: "#e74c3c", color: "#922b21",
+      weight: 1, opacity: 0.85, fillOpacity: 0.55
+    }).bindTooltip("<b>" + c.name + "</b><br>" + c.clicks + " click" + (c.clicks !== 1 ? "s" : ""), { direction: "top" }).addTo(map);
+  });
+})();
+</script>
