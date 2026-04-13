@@ -131,7 +131,8 @@ def main():
 
     end = datetime.now(timezone.utc).date()
     start = end - timedelta(days=365 * 2)
-    params = f"?start={start.isoformat()}&end={end.isoformat()}&limit=200"
+    params = f"?start={start.isoformat()}&end={end.isoformat()}"
+    loc_params = params + "&limit=200"
 
     # Start from the frozen GSC baseline (pre-GoatCounter history)
     merged = {}  # code -> {name, lat, lng, clicks}
@@ -147,8 +148,8 @@ def main():
         pass
 
     # Add GoatCounter counts on top
-    loc = api_get(f"/stats/locations{params}", code, token)
-    print(f"GoatCounter /stats/locations raw response: {json.dumps(loc)[:800]}")
+    loc = api_get(f"/stats/locations{loc_params}", code, token)
+    print(f"GoatCounter /stats/locations: {json.dumps(loc)[:800]}")
     try:
         total = api_get(f"/stats/total{params}", code, token)
         print(f"GoatCounter /stats/total: {json.dumps(total)[:400]}")
