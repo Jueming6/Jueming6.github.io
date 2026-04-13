@@ -1,0 +1,12 @@
+{
+  "note": "Frozen Google Search Console snapshot as of 2026-04-04. GoatCounter data is added on top of these counts.",
+  "countries": [
+    {"code": "US", "name": "United States", "lat": 37.09,  "lng": -95.71, "clicks": 72},
+    {"code": "ES", "name": "Spain",         "lat": 40.46,  "lng": -3.75,  "clicks": 6},
+    {"code": "IN", "name": "India",         "lat": 20.59,  "lng": 78.96,  "clicks": 1},
+    {"code": "IT", "name": "Italy",         "lat": 41.87,  "lng": 12.57,  "clicks": 1},
+    {"code": "HK", "name": "Hong Kong",     "lat": 22.32,  "lng": 114.17, "clicks": 1},
+    {"code": "AU", "name": "Australia",     "lat": -25.27, "lng": 133.78, "clicks": 1},
+    {"code": "JP", "name": "Japan",         "lat": 36.20,  "lng": 138.25, "clicks": 1}
+  ]
+}

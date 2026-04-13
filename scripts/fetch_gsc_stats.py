@@ -10,6 +10,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 DATA_FILE = "_data/gsc_stats.json"
+BASELINE_FILE = "_data/gsc_baseline.json"
 
 # ISO 3166-1 alpha-2 -> (display name, lat, lng)
 COUNTRY_DATA = {
@@ -124,20 +125,35 @@ def main():
     start = end - timedelta(days=365 * 2)
     params = f"?start={start.isoformat()}&end={end.isoformat()}&limit=200"
 
+    # Start from the frozen GSC baseline (pre-GoatCounter history)
+    merged = {}  # code -> {name, lat, lng, clicks}
+    try:
+        with open(BASELINE_FILE) as f:
+            baseline = json.load(f)
+        for c in baseline.get("countries", []):
+            merged[c["code"].upper()] = {
+                "name": c["name"], "lat": c["lat"], "lng": c["lng"],
+                "clicks": int(c.get("clicks", 0)),
+            }
+    except FileNotFoundError:
+        pass
+
+    # Add GoatCounter counts on top
     loc = api_get(f"/stats/locations{params}", code, token)
-    countries = []
     for row in loc.get("stats", []):
         cid = (row.get("id") or "").upper()
         count = int(row.get("count", 0))
         if count <= 0 or not cid:
             continue
-        if cid in COUNTRY_DATA:
+        if cid in merged:
+            merged[cid]["clicks"] += count
+        elif cid in COUNTRY_DATA:
             name, lat, lng = COUNTRY_DATA[cid]
+            merged[cid] = {"name": name, "lat": lat, "lng": lng, "clicks": count}
         else:
-            name = row.get("name") or cid
-            lat, lng = 0.0, 0.0
-        countries.append({"name": name, "lat": lat, "lng": lng, "clicks": count})
-    countries.sort(key=lambda x: -x["clicks"])
+            merged[cid] = {"name": row.get("name") or cid, "lat": 0.0, "lng": 0.0, "clicks": count}
+
+    countries = sorted(merged.values(), key=lambda x: -x["clicks"])
 
     total_clicks = sum(c["clicks"] for c in countries)
 
