@@ -113,13 +113,21 @@ def api_get(path, code, token):
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
     })
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")[:500]
+        raise SystemExit(f"HTTP {e.code} from {url}\nResponse body: {body}")
 
 
 def main():
-    code = os.environ["GOATCOUNTER_CODE"]
-    token = os.environ["GOATCOUNTER_TOKEN"]
+    code = os.environ["GOATCOUNTER_CODE"].strip()
+    token = os.environ["GOATCOUNTER_TOKEN"].strip()
+    print(f"Using subdomain: {code}.goatcounter.com")
+
+    # Health check — validates subdomain + token before the real query
+    api_get("/me", code, token)
 
     end = datetime.now(timezone.utc).date()
     start = end - timedelta(days=365 * 2)
