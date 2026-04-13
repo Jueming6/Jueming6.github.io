@@ -148,6 +148,12 @@ def main():
 
     # Add GoatCounter counts on top
     loc = api_get(f"/stats/locations{params}", code, token)
+    print(f"GoatCounter /stats/locations raw response: {json.dumps(loc)[:800]}")
+    try:
+        total = api_get(f"/stats/total{params}", code, token)
+        print(f"GoatCounter /stats/total: {json.dumps(total)[:400]}")
+    except SystemExit as e:
+        print(f"(total probe failed: {e})")
     for row in loc.get("stats", []):
         cid = (row.get("id") or "").upper()
         count = int(row.get("count", 0))
