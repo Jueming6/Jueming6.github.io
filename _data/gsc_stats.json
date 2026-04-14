@@ -1,13 +1,13 @@
 {
-  "total_clicks": 83,
+  "total_clicks": 87,
   "total_countries": 7,
-  "updated": "2026-04-13",
+  "updated": "2026-04-14",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 72
+      "clicks": 76
     },
     {
       "name": "Spain",
