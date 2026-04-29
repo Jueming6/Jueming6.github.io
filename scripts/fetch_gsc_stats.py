@@ -126,9 +126,6 @@ def main():
     token = os.environ["GOATCOUNTER_TOKEN"].strip()
     print(f"Using subdomain: {code}.goatcounter.com")
 
-    # Health check — validates subdomain + token before the real query
-    api_get("/me", code, token)
-
     end = datetime.now(timezone.utc).date()
     start = end - timedelta(days=365 * 2)
     params = f"?start={start.isoformat()}&end={end.isoformat()}"
