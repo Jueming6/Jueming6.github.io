@@ -187,6 +187,19 @@ def write_stats(stats):
         json.dump(stats, f, indent=2)
 
 
+def scale_countries(countries, target_total):
+    """Scale a country list proportionally so it sums to target_total, keeping
+    its geographic shape. Returns the (mutated) list; total stays consistent
+    because callers derive total_clicks from the same summed result."""
+    current = sum(c["clicks"] for c in countries)
+    if current <= 0 or target_total <= 0:
+        return countries
+    factor = target_total / current
+    for c in countries:
+        c["clicks"] = int(round(c["clicks"] * factor))
+    return countries
+
+
 def main():
     code = os.environ.get("GOATCOUNTER_CODE", "").strip()
     token = os.environ.get("GOATCOUNTER_TOKEN", "").strip()
@@ -223,10 +236,25 @@ def main():
                   "so the token is fine and only the locations endpoint is down.")
         else:
             print(f"  diagnostic: /stats/total also failing ({terr}).")
-        # Keep the last good file EXACTLY as-is so the headline stays consistent
-        # with the map. Better a slightly stale-but-correct counter than a
-        # contradictory one.
-        if previous:
+        # Locations is down, but /stats/total still gives the real magnitude.
+        # Refresh the headline by rescaling the last-known geographic shape to
+        # the current pageview total, so the map still sums to the real number
+        # (and stays internally consistent) instead of freezing at a stale value.
+        if terr is None and isinstance(total_data, dict) and previous and previous.get("countries"):
+            gc_total = int(total_data.get("total", 0))
+            new_total = baseline_total + gc_total
+            countries = sorted(scale_countries(previous["countries"], new_total),
+                               key=lambda x: -x["clicks"])
+            total_clicks = sum(c["clicks"] for c in countries)
+            write_stats({
+                "total_clicks": total_clicks,
+                "total_countries": len(countries),
+                "updated": end.isoformat(),
+                "countries": countries,
+            })
+            print(f"Rescaled last-known distribution to {total_clicks} visits "
+                  f"(locations down; map shape from previous run).")
+        elif previous:
             print("Keeping existing stats unchanged. Nothing to commit.")
         else:
             print("No previous stats file; publishing GSC baseline only.")
@@ -239,20 +267,42 @@ def main():
             })
         return
 
-    # --- Success: add GoatCounter counts on top of the baseline. ---
+    # --- Success: build the geographic distribution from /stats/locations. ---
     print(f"GoatCounter /stats/locations: {json.dumps(loc)[:800]}")
+    gc_dist, gc_names = {}, {}  # country code -> located count / display name
     for row in loc.get("stats", []):
         cid = (row.get("id") or "").upper()
         count = int(row.get("count", 0))
         if count <= 0 or not cid:
             continue
+        gc_dist[cid] = gc_dist.get(cid, 0) + count
+        gc_names[cid] = row.get("name") or cid
+    raw_sum = sum(gc_dist.values())
+
+    # GoatCounter's per-country counts are *unique visitors*, while /stats/total
+    # counts *pageviews* (a larger number). Take the magnitude from /stats/total
+    # and the geographic *shape* from the locations breakdown, then scale the
+    # shape up so the country map sums to the real pageview total instead of the
+    # much smaller visitor count.
+    total_data, terr = api_get(f"/stats/total{params}", code, token)
+    gc_total = int(total_data.get("total", 0)) if (terr is None and isinstance(total_data, dict)) else 0
+    if gc_total:
+        print(f"GoatCounter /stats/total: {gc_total} pageviews")
+    if not gc_total or raw_sum == 0:
+        gc_total = raw_sum  # /stats/total unavailable -> fall back to raw counts
+        print(f"(/stats/total unavailable; using raw located counts, sum={raw_sum})")
+    scale = gc_total / raw_sum if raw_sum else 0.0
+
+    # Add the scaled GoatCounter pageviews on top of the frozen GSC baseline.
+    for cid, raw in gc_dist.items():
+        add = int(round(raw * scale))
         if cid in merged:
-            merged[cid]["clicks"] += count
+            merged[cid]["clicks"] += add
         elif cid in COUNTRY_DATA:
             name, lat, lng = COUNTRY_DATA[cid]
-            merged[cid] = {"name": name, "lat": lat, "lng": lng, "clicks": count}
+            merged[cid] = {"name": name, "lat": lat, "lng": lng, "clicks": add}
         else:
-            merged[cid] = {"name": row.get("name") or cid, "lat": 0.0, "lng": 0.0, "clicks": count}
+            merged[cid] = {"name": gc_names.get(cid, cid), "lat": 0.0, "lng": 0.0, "clicks": add}
 
     countries = sorted(merged.values(), key=lambda x: -x["clicks"])
     total_clicks = sum(c["clicks"] for c in countries)
@@ -263,7 +313,8 @@ def main():
         "updated": end.isoformat(),
         "countries": countries,
     })
-    print(f"Done: {total_clicks} visits, {len(countries)} countries -> {DATA_FILE}")
+    print(f"Done: {total_clicks} visits across {len(countries)} countries "
+          f"(GC pageviews {gc_total} distributed by location share) -> {DATA_FILE}")
 
 
 if __name__ == "__main__":
