@@ -5,11 +5,11 @@ permalink: /research/
 author_profile: true
 ---
 
-Our Safe and resiLient Autonomous decision-Making (SLAM) Lab at UND focuses on advancing research in three interrelated areas: 
+The Safe and resiLient Autonomous decision-Making (SLAM) Lab focuses on advancing research in three interrelated areas: 
 
-1. Reinforcement learning driven UAV operations,
-2. Autonomous decision making,
-3. Resilient autonomous systems. 
+1. AI-driven UAS autonomy, 
+2. Decision-making in multi-agent autonomous systems,
+3. Resilient and trustworthy autonomy. 
 
 We integrate artificial intelligence, formal methods, and optimization techniques to enhance the resilience, safety, efficiency, and reliability of cyber-physical systems.
 
