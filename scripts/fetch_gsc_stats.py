@@ -6,6 +6,7 @@ Env vars: GOATCOUNTER_CODE (e.g. "jueming"), GOATCOUNTER_TOKEN (API token).
 
 import json
 import os
+import time
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
@@ -107,29 +108,45 @@ COUNTRY_DATA = {
 }
 
 
-def api_get(path, code, token):
+# GoatCounter's /stats/locations endpoint is intermittently flaky for this
+# account (observed 404s in separate runs while /stats/total kept working), so
+# treat these statuses as worth retrying rather than giving up immediately.
+TRANSIENT_STATUSES = {404, 408, 425, 429, 500, 502, 503, 504}
+
+
+def api_get(path, code, token, retries=4, backoff=3.0):
     """Return (data, error).
 
     On success: (parsed_json, None).
     On failure: (None, (http_status_or_None, body_text)).
 
-    Never raises for HTTP/network errors so callers can decide whether a given
-    failure is fatal (bad token) or something we can degrade around (a transient
-    endpoint hiccup, which is what took the whole workflow down before).
+    Retries transient failures (see TRANSIENT_STATUSES + network errors) with a
+    linear backoff. Auth/client errors (401/403/400) are returned immediately so
+    the caller can fail loud. Never raises for HTTP/network errors.
     """
     url = f"https://{code}.goatcounter.com/api/v0{path}"
     req = urllib.request.Request(url, headers={
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
     })
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8")), None
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")[:500]
-        return None, (e.code, body)
-    except urllib.error.URLError as e:
-        return None, (None, str(e.reason))
+    endpoint = path.split("?")[0]
+    last_err = None
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.loads(r.read().decode("utf-8")), None
+        except urllib.error.HTTPError as e:
+            body = e.read().decode("utf-8", errors="replace")[:500]
+            last_err = (e.code, body)
+            if e.code not in TRANSIENT_STATUSES:
+                return None, last_err  # auth/client error: retrying won't help
+        except urllib.error.URLError as e:
+            last_err = (None, str(e.reason))
+        if attempt < retries:
+            print(f"  {endpoint}: attempt {attempt}/{retries} failed "
+                  f"({last_err[0]} {str(last_err[1])[:120]}); retrying...")
+            time.sleep(backoff * attempt)
+    return None, last_err
 
 
 def load_json(path):
@@ -188,39 +205,38 @@ def main():
     baseline_total = sum(c["clicks"] for c in merged.values())
     previous = load_json(DATA_FILE)
 
-    # --- Per-country breakdown (drives the map). Best-effort. ---
-    loc, err = api_get(f"/stats/locations{params}&limit=200", code, token)
+    # --- Per-country breakdown. This single source drives BOTH the map and the
+    # headline total, so they can never disagree. (An earlier version refreshed
+    # the total from /stats/total when locations failed, which left the headline
+    # and the map showing different numbers.) ---
+    loc, err = api_get(f"/stats/locations{params}&limit=100", code, token)
     if err is not None:
         status, body = err
         fatal_if_auth_error(status, body)  # bad token/permission -> stop here
-        # Transient failure (e.g. the 404 that used to kill the run). Keep the
-        # last good data so the page never regresses, and try to at least
-        # refresh the headline total from a different endpoint.
-        print(f"WARNING: /stats/locations unavailable (HTTP {status}): {body}")
+        print(f"WARNING: /stats/locations still failing after retries "
+              f"(HTTP {status}): {body}")
+        # Diagnostic only (NOT written anywhere): does the sibling endpoint work?
+        # If so, the problem is specific to /stats/locations, not the token.
+        total_data, terr = api_get(f"/stats/total{params}", code, token)
+        if terr is None and isinstance(total_data, dict):
+            print(f"  diagnostic: /stats/total works (total={total_data.get('total')}), "
+                  "so the token is fine and only the locations endpoint is down.")
+        else:
+            print(f"  diagnostic: /stats/total also failing ({terr}).")
+        # Keep the last good file EXACTLY as-is so the headline stays consistent
+        # with the map. Better a slightly stale-but-correct counter than a
+        # contradictory one.
         if previous:
-            total_data, terr = api_get(f"/stats/total{params}", code, token)
-            if terr is None and isinstance(total_data, dict):
-                gc_total = int(total_data.get("total", 0))
-                previous["total_clicks"] = baseline_total + gc_total
-                previous["updated"] = end.isoformat()
-                write_stats(previous)
-                print(f"Refreshed total only: {previous['total_clicks']} visits "
-                      f"(country map kept from last successful run).")
-            else:
-                tstatus = terr[0] if terr else None
-                fatal_if_auth_error(tstatus, terr[1] if terr else "")
-                print("Both stats endpoints unavailable; keeping existing data "
-                      "unchanged. Nothing to commit.")
-            return
-        # No previous data at all: publish the baseline so the counter still works.
-        print("No previous stats file; publishing GSC baseline only.")
-        countries = sorted(merged.values(), key=lambda x: -x["clicks"])
-        write_stats({
-            "total_clicks": baseline_total,
-            "total_countries": len(countries),
-            "updated": end.isoformat(),
-            "countries": countries,
-        })
+            print("Keeping existing stats unchanged. Nothing to commit.")
+        else:
+            print("No previous stats file; publishing GSC baseline only.")
+            countries = sorted(merged.values(), key=lambda x: -x["clicks"])
+            write_stats({
+                "total_clicks": baseline_total,
+                "total_countries": len(countries),
+                "updated": end.isoformat(),
+                "countries": countries,
+            })
         return
 
     # --- Success: add GoatCounter counts on top of the baseline. ---
