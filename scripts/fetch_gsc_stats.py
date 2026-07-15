@@ -108,6 +108,15 @@ COUNTRY_DATA = {
 
 
 def api_get(path, code, token):
+    """Return (data, error).
+
+    On success: (parsed_json, None).
+    On failure: (None, (http_status_or_None, body_text)).
+
+    Never raises for HTTP/network errors so callers can decide whether a given
+    failure is fatal (bad token) or something we can degrade around (a transient
+    endpoint hiccup, which is what took the whole workflow down before).
+    """
     url = f"https://{code}.goatcounter.com/api/v0{path}"
     req = urllib.request.Request(url, headers={
         "Authorization": f"Bearer {token}",
@@ -115,43 +124,107 @@ def api_get(path, code, token):
     })
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8"))
+            return json.loads(r.read().decode("utf-8")), None
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")[:500]
-        raise SystemExit(f"HTTP {e.code} from {url}\nResponse body: {body}")
+        return None, (e.code, body)
+    except urllib.error.URLError as e:
+        return None, (None, str(e.reason))
+
+
+def load_json(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
+
+
+def fatal_if_auth_error(status, body):
+    """Auth/config problems are actionable, so fail loud. Everything else
+    (404 'not found', 5xx, network) is treated as transient by the caller."""
+    if status in (401, 403):
+        raise SystemExit(
+            f"ERROR: GoatCounter rejected the request (HTTP {status}): {body}\n"
+            "This is a token/permission problem, not a transient one. Check that:\n"
+            "  * the GOATCOUNTER_TOKEN secret is current (not revoked/regenerated), and\n"
+            "  * the token has the 'Read statistics' permission for this site.\n"
+            "Create/inspect tokens at https://<code>.goatcounter.com/user/api."
+        )
+
+
+def baseline_countries():
+    """Frozen GSC baseline (pre-GoatCounter history), keyed by country code."""
+    merged = {}  # code -> {name, lat, lng, clicks}
+    baseline = load_json(BASELINE_FILE) or {}
+    for c in baseline.get("countries", []):
+        merged[c["code"].upper()] = {
+            "name": c["name"], "lat": c["lat"], "lng": c["lng"],
+            "clicks": int(c.get("clicks", 0)),
+        }
+    return merged
+
+
+def write_stats(stats):
+    with open(DATA_FILE, "w") as f:
+        json.dump(stats, f, indent=2)
 
 
 def main():
-    code = os.environ["GOATCOUNTER_CODE"].strip()
-    token = os.environ["GOATCOUNTER_TOKEN"].strip()
+    code = os.environ.get("GOATCOUNTER_CODE", "").strip()
+    token = os.environ.get("GOATCOUNTER_TOKEN", "").strip()
+    if not code or not token:
+        raise SystemExit(
+            "ERROR: GOATCOUNTER_CODE and GOATCOUNTER_TOKEN must both be set "
+            "(GitHub repo secrets for this workflow)."
+        )
     print(f"Using subdomain: {code}.goatcounter.com")
 
     end = datetime.now(timezone.utc).date()
     start = end - timedelta(days=365 * 2)
     params = f"?start={start.isoformat()}&end={end.isoformat()}"
-    loc_params = params + "&limit=200"
 
-    # Start from the frozen GSC baseline (pre-GoatCounter history)
-    merged = {}  # code -> {name, lat, lng, clicks}
-    try:
-        with open(BASELINE_FILE) as f:
-            baseline = json.load(f)
-        for c in baseline.get("countries", []):
-            merged[c["code"].upper()] = {
-                "name": c["name"], "lat": c["lat"], "lng": c["lng"],
-                "clicks": int(c.get("clicks", 0)),
-            }
-    except FileNotFoundError:
-        pass
+    merged = baseline_countries()
+    baseline_total = sum(c["clicks"] for c in merged.values())
+    previous = load_json(DATA_FILE)
 
-    # Add GoatCounter counts on top
-    loc = api_get(f"/stats/locations{loc_params}", code, token)
+    # --- Per-country breakdown (drives the map). Best-effort. ---
+    loc, err = api_get(f"/stats/locations{params}&limit=200", code, token)
+    if err is not None:
+        status, body = err
+        fatal_if_auth_error(status, body)  # bad token/permission -> stop here
+        # Transient failure (e.g. the 404 that used to kill the run). Keep the
+        # last good data so the page never regresses, and try to at least
+        # refresh the headline total from a different endpoint.
+        print(f"WARNING: /stats/locations unavailable (HTTP {status}): {body}")
+        if previous:
+            total_data, terr = api_get(f"/stats/total{params}", code, token)
+            if terr is None and isinstance(total_data, dict):
+                gc_total = int(total_data.get("total", 0))
+                previous["total_clicks"] = baseline_total + gc_total
+                previous["updated"] = end.isoformat()
+                write_stats(previous)
+                print(f"Refreshed total only: {previous['total_clicks']} visits "
+                      f"(country map kept from last successful run).")
+            else:
+                tstatus = terr[0] if terr else None
+                fatal_if_auth_error(tstatus, terr[1] if terr else "")
+                print("Both stats endpoints unavailable; keeping existing data "
+                      "unchanged. Nothing to commit.")
+            return
+        # No previous data at all: publish the baseline so the counter still works.
+        print("No previous stats file; publishing GSC baseline only.")
+        countries = sorted(merged.values(), key=lambda x: -x["clicks"])
+        write_stats({
+            "total_clicks": baseline_total,
+            "total_countries": len(countries),
+            "updated": end.isoformat(),
+            "countries": countries,
+        })
+        return
+
+    # --- Success: add GoatCounter counts on top of the baseline. ---
     print(f"GoatCounter /stats/locations: {json.dumps(loc)[:800]}")
-    try:
-        total = api_get(f"/stats/total{params}", code, token)
-        print(f"GoatCounter /stats/total: {json.dumps(total)[:400]}")
-    except SystemExit as e:
-        print(f"(total probe failed: {e})")
     for row in loc.get("stats", []):
         cid = (row.get("id") or "").upper()
         count = int(row.get("count", 0))
@@ -166,19 +239,14 @@ def main():
             merged[cid] = {"name": row.get("name") or cid, "lat": 0.0, "lng": 0.0, "clicks": count}
 
     countries = sorted(merged.values(), key=lambda x: -x["clicks"])
-
     total_clicks = sum(c["clicks"] for c in countries)
 
-    stats = {
+    write_stats({
         "total_clicks": total_clicks,
         "total_countries": len(countries),
         "updated": end.isoformat(),
         "countries": countries,
-    }
-
-    with open(DATA_FILE, "w") as f:
-        json.dump(stats, f, indent=2)
-
+    })
     print(f"Done: {total_clicks} visits, {len(countries)} countries -> {DATA_FILE}")
 
 
