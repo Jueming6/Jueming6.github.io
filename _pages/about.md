@@ -21,6 +21,10 @@ I am an assistant professor in the Department of Mechanical Engineering at the U
 <div class="tl-wrap">
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
+   <li>
+      <div class="desc">SLAM Lab member Sajan presented our paper "<a href="https://www.researchgate.net/publication/406027502_Aerodynamic_Effects_of_Fuselage-Package_Separation_Distance_on_UAV_Performance#fullTextFileContent">Aerodynamic Effects of Fuselage-Package Separation Distance on UAV Performance</a>" at the <em>AIAA Aviation Forum 2026</em>.</div>
+      <div class="month">June</div>
+    </li>
     <li>
       <div class="desc">Dr. Hu delivered a virtual guest lecture for CompE 696 - AI for Unmanned Systems at <em>San Diego State University</em>.</div>
       <div class="month">March</div>
