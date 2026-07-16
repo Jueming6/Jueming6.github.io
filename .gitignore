@@ -1,6 +1,12 @@
 # Ignore the contents of the _site directory and other cache directories
 _site/
 .sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Local Ruby/Bundler install for previewing the site
+vendor/
+.bundle/
 
 # Ignore the directory for local files during development
 local/

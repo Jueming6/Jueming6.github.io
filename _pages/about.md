@@ -14,13 +14,18 @@ redirect_from:
 ## Faculty (Jueming Hu)
 
 <p style="text-align: justify;">
-I am an assistant professor in the Department of Mechanical Engineering at the University of North Dakota (UND). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as a B.S. in Mechanical Engineering from Southeast University, China. Before joining UND, I was a postdoctoral researcher at Texas A&M University and Arizona State University.
+I am an incoming assistant professor in the <a href="https://www.ou.edu/coe/ame">School of Aerospace and Mechanical Engineering</a> at the <a href="https://www.ou.edu/">University of Oklahoma</a> (OU). I received my Ph.D. and M.S. in Mechanical Engineering from Arizona State University, as well as my B.S. in Mechanical Engineering from Southeast University, China. Before my transition to OU, I was an assistant professor at the University of North Dakota (UND) starting in January 2025. Prior to that, I was a postdoctoral researcher at Texas A&M University and Arizona State University. 
+
 </p>
 
 ## News
 <div class="tl-wrap">
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
+  <li>
+      <div class="desc">Dr. Hu is joining the <a href="https://www.ou.edu/coe/ame">School of Aerospace and Mechanical Engineering</a> at the <a href="https://www.ou.edu/">University of Oklahoma</a> as an assistant professor! The SLAM Lab will also relocate to OU.</div>
+      <div class="month">July</div>
+    </li> 
    <li>
       <div class="desc">SLAM Lab member Sajan presented our paper "<a href="https://www.researchgate.net/publication/406027502_Aerodynamic_Effects_of_Fuselage-Package_Separation_Distance_on_UAV_Performance#fullTextFileContent">Aerodynamic Effects of Fuselage-Package Separation Distance on UAV Performance</a>" at the <em>AIAA Aviation Forum 2026</em>.</div>
       <div class="month">June</div>

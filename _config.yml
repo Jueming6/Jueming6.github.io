@@ -26,15 +26,16 @@ author:
   name             : "Jueming Hu"
   pronouns         : # example: "she/her"  
   bio              : "Assistant Professor of Aerospace Engineering"
-  location         : "Grand forks, ND"
-  employer         : "University of North Dakota"
+  location         : "Norman, OK"
+  employer         : "University of Oklahoma"
   uri              : # URL
-  email            : "jueming.hu@und.edu" 
+  email            : "jueming@ou.edu" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "https://scholar.google.com/citations?user=g78m1UEAAAAJ&hl=en"
-  website          :  "https://campus.und.edu/directory/jueming.hu"
+  website          : "https://jueming6.github.io"
+  #"https://campus.und.edu/directory/jueming.hu"
   impactstory      : # URL
   orcid            : #"http://orcid.org/yourorcidurl"
   #semantic         : # URL
