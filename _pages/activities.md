@@ -6,6 +6,12 @@ author_profile: true
 ---
 
 ## Invited talks
+
+- Guest Lecture, CompE 696: AI for Unmanned Systems, San Diego State University, 2026.
+- Invited Seminar, AIAA Intelligent Systems Technical Committee (ISTC) Technical Seminar Series, 2026.
+
+
+{% comment %}
 - University of North Dakota, Department of Mechanical Engineering, 2024.  
 <!-- (Host: Dr. Clement Tang) -->
 - Virginia Tech, Department of Aerospace and Ocean Engineering, 2024. 
@@ -16,6 +22,8 @@ author_profile: true
  <!-- (Host: ) -->
 - Sandia National Laboratories, Computational Data Science Department, 2023. 
 <!-- (Host:) -->
+{% endcomment %}
+
 
 ## Conference service
 
