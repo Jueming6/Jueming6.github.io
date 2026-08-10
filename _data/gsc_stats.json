@@ -1,25 +1,31 @@
 {
-  "total_clicks": 1458,
+  "total_clicks": 1593,
   "total_countries": 29,
-  "updated": "2026-08-03",
+  "updated": "2026-08-10",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1136
+      "clicks": 1235
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 131
+      "clicks": 145
     },
     {
       "name": "Japan",
       "lat": 36.2,
       "lng": 138.25,
-      "clicks": 22
+      "clicks": 31
+    },
+    {
+      "name": "South Korea",
+      "lat": 35.91,
+      "lng": 127.77,
+      "clicks": 20
     },
     {
       "name": "Singapore",
@@ -28,34 +34,28 @@
       "clicks": 20
     },
     {
-      "name": "South Korea",
-      "lat": 35.91,
-      "lng": 127.77,
-      "clicks": 19
-    },
-    {
       "name": "Pakistan",
       "lat": 30.38,
       "lng": 69.35,
-      "clicks": 17
+      "clicks": 18
     },
     {
       "name": "Spain",
       "lat": 40.46,
       "lng": -3.75,
-      "clicks": 13
+      "clicks": 16
+    },
+    {
+      "name": "Hong Kong",
+      "lat": 22.32,
+      "lng": 114.17,
+      "clicks": 16
     },
     {
       "name": "Australia",
       "lat": -25.27,
       "lng": 133.78,
       "clicks": 13
-    },
-    {
-      "name": "Hong Kong",
-      "lat": 22.32,
-      "lng": 114.17,
-      "clicks": 9
     },
     {
       "name": "India",
@@ -124,6 +124,12 @@
       "clicks": 3
     },
     {
+      "name": "China",
+      "lat": 35.86,
+      "lng": 104.2,
+      "clicks": 2
+    },
+    {
       "name": "Ghana",
       "lat": 7.95,
       "lng": -1.02,
@@ -139,12 +145,6 @@
       "name": "Italy",
       "lat": 41.87,
       "lng": 12.57,
-      "clicks": 1
-    },
-    {
-      "name": "China",
-      "lat": 35.86,
-      "lng": 104.2,
       "clicks": 1
     },
     {
