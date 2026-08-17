@@ -1,30 +1,36 @@
 {
-  "total_clicks": 1593,
-  "total_countries": 29,
-  "updated": "2026-08-10",
+  "total_clicks": 1696,
+  "total_countries": 31,
+  "updated": "2026-08-17",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1235
+      "clicks": 1301
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 145
+      "clicks": 156
     },
     {
       "name": "Japan",
       "lat": 36.2,
       "lng": 138.25,
-      "clicks": 31
+      "clicks": 37
     },
     {
       "name": "South Korea",
       "lat": 35.91,
       "lng": 127.77,
+      "clicks": 22
+    },
+    {
+      "name": "Pakistan",
+      "lat": 30.38,
+      "lng": 69.35,
       "clicks": 20
     },
     {
@@ -34,10 +40,10 @@
       "clicks": 20
     },
     {
-      "name": "Pakistan",
-      "lat": 30.38,
-      "lng": 69.35,
-      "clicks": 18
+      "name": "Hong Kong",
+      "lat": 22.32,
+      "lng": 114.17,
+      "clicks": 17
     },
     {
       "name": "Spain",
@@ -46,10 +52,10 @@
       "clicks": 16
     },
     {
-      "name": "Hong Kong",
-      "lat": 22.32,
-      "lng": 114.17,
-      "clicks": 16
+      "name": "India",
+      "lat": 20.59,
+      "lng": 78.96,
+      "clicks": 15
     },
     {
       "name": "Australia",
@@ -58,22 +64,16 @@
       "clicks": 13
     },
     {
-      "name": "India",
-      "lat": 20.59,
-      "lng": 78.96,
-      "clicks": 8
+      "name": "Canada",
+      "lat": 56.13,
+      "lng": -106.35,
+      "clicks": 9
     },
     {
       "name": "Nepal",
       "lat": 28.39,
       "lng": 84.12,
       "clicks": 8
-    },
-    {
-      "name": "Canada",
-      "lat": 56.13,
-      "lng": -106.35,
-      "clicks": 7
     },
     {
       "name": "Jordan",
@@ -100,6 +100,12 @@
       "clicks": 6
     },
     {
+      "name": "France",
+      "lat": 46.23,
+      "lng": 2.21,
+      "clicks": 5
+    },
+    {
       "name": "Nigeria",
       "lat": 9.08,
       "lng": 8.68,
@@ -118,9 +124,9 @@
       "clicks": 5
     },
     {
-      "name": "France",
-      "lat": 46.23,
-      "lng": 2.21,
+      "name": "Vietnam",
+      "lat": 14.06,
+      "lng": 108.28,
       "clicks": 3
     },
     {
@@ -163,6 +169,12 @@
       "name": "Malaysia",
       "lat": 4.21,
       "lng": 101.98,
+      "clicks": 1
+    },
+    {
+      "name": "Norway",
+      "lat": 60.47,
+      "lng": 8.47,
       "clicks": 1
     },
     {
