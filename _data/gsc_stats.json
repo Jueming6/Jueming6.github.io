@@ -1,43 +1,85 @@
 {
-  "total_clicks": 683,
-  "total_countries": 20,
-  "updated": "2026-07-15",
+  "total_clicks": 1696,
+  "total_countries": 31,
+  "updated": "2026-08-17",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 583
+      "clicks": 1301
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 27
-    },
-    {
-      "name": "South Korea",
-      "lat": 35.91,
-      "lng": 127.77,
-      "clicks": 13
-    },
-    {
-      "name": "Singapore",
-      "lat": 1.35,
-      "lng": 103.82,
-      "clicks": 10
-    },
-    {
-      "name": "Australia",
-      "lat": -25.27,
-      "lng": 133.78,
-      "clicks": 8
+      "clicks": 156
     },
     {
       "name": "Japan",
       "lat": 36.2,
       "lng": 138.25,
+      "clicks": 37
+    },
+    {
+      "name": "South Korea",
+      "lat": 35.91,
+      "lng": 127.77,
+      "clicks": 22
+    },
+    {
+      "name": "Pakistan",
+      "lat": 30.38,
+      "lng": 69.35,
+      "clicks": 20
+    },
+    {
+      "name": "Singapore",
+      "lat": 1.35,
+      "lng": 103.82,
+      "clicks": 20
+    },
+    {
+      "name": "Hong Kong",
+      "lat": 22.32,
+      "lng": 114.17,
+      "clicks": 17
+    },
+    {
+      "name": "Spain",
+      "lat": 40.46,
+      "lng": -3.75,
+      "clicks": 16
+    },
+    {
+      "name": "India",
+      "lat": 20.59,
+      "lng": 78.96,
+      "clicks": 15
+    },
+    {
+      "name": "Australia",
+      "lat": -25.27,
+      "lng": 133.78,
+      "clicks": 13
+    },
+    {
+      "name": "Canada",
+      "lat": 56.13,
+      "lng": -106.35,
+      "clicks": 9
+    },
+    {
+      "name": "Nepal",
+      "lat": 28.39,
+      "lng": 84.12,
       "clicks": 8
+    },
+    {
+      "name": "Jordan",
+      "lat": 30.59,
+      "lng": 36.24,
+      "clicks": 7
     },
     {
       "name": "Thailand",
@@ -46,39 +88,63 @@
       "clicks": 7
     },
     {
-      "name": "Spain",
-      "lat": 40.46,
-      "lng": -3.75,
+      "name": "United Kingdom",
+      "lat": 55.38,
+      "lng": -3.44,
       "clicks": 6
-    },
-    {
-      "name": "Canada",
-      "lat": 56.13,
-      "lng": -106.35,
-      "clicks": 5
     },
     {
       "name": "Taiwan",
       "lat": 23.7,
       "lng": 121.0,
+      "clicks": 6
+    },
+    {
+      "name": "France",
+      "lat": 46.23,
+      "lng": 2.21,
+      "clicks": 5
+    },
+    {
+      "name": "Nigeria",
+      "lat": 9.08,
+      "lng": 8.68,
+      "clicks": 5
+    },
+    {
+      "name": "Netherlands",
+      "lat": 52.13,
+      "lng": 5.29,
+      "clicks": 5
+    },
+    {
+      "name": "Saudi Arabia",
+      "lat": 23.89,
+      "lng": 45.08,
+      "clicks": 5
+    },
+    {
+      "name": "Vietnam",
+      "lat": 14.06,
+      "lng": 108.28,
       "clicks": 3
     },
     {
-      "name": "India",
-      "lat": 20.59,
-      "lng": 78.96,
-      "clicks": 2
-    },
-    {
-      "name": "Hong Kong",
-      "lat": 22.32,
-      "lng": 114.17,
+      "name": "China",
+      "lat": 35.86,
+      "lng": 104.2,
       "clicks": 2
     },
     {
       "name": "Ghana",
       "lat": 7.95,
       "lng": -1.02,
+      "clicks": 2
+    },
+    {
+      "name": "Poland",
+      "lat": 51.92,
+      "lng": 19.15,
       "clicks": 2
     },
     {
@@ -100,15 +166,15 @@
       "clicks": 1
     },
     {
-      "name": "Pakistan",
-      "lat": 30.38,
-      "lng": 69.35,
+      "name": "Malaysia",
+      "lat": 4.21,
+      "lng": 101.98,
       "clicks": 1
     },
     {
-      "name": "Poland",
-      "lat": 51.92,
-      "lng": 19.15,
+      "name": "Norway",
+      "lat": 60.47,
+      "lng": 8.47,
       "clicks": 1
     },
     {
