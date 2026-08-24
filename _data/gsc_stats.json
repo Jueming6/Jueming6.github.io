@@ -1,31 +1,31 @@
 {
-  "total_clicks": 1696,
+  "total_clicks": 1790,
   "total_countries": 31,
-  "updated": "2026-08-17",
+  "updated": "2026-08-24",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1301
+      "clicks": 1383
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 156
+      "clicks": 158
     },
     {
       "name": "Japan",
       "lat": 36.2,
       "lng": 138.25,
-      "clicks": 37
+      "clicks": 44
     },
     {
       "name": "South Korea",
       "lat": 35.91,
       "lng": 127.77,
-      "clicks": 22
+      "clicks": 25
     },
     {
       "name": "Pakistan",
