@@ -1,13 +1,13 @@
 {
-  "total_clicks": 1837,
+  "total_clicks": 1879,
   "total_countries": 32,
-  "updated": "2026-08-31",
+  "updated": "2026-09-07",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1418
+      "clicks": 1460
     },
     {
       "name": "Bangladesh",
