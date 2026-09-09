@@ -22,7 +22,7 @@ repository               : "jueming6.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "hu.JPG"
+  avatar           : "hu.jpg"
   name             : "Jueming Hu"
   pronouns         : # example: "she/her"  
   bio              : "Assistant Professor, School of Aerospace and Mechanical Engineering"
