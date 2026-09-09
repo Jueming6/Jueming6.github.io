@@ -1,5 +1,5 @@
 git add . 
-git commit -m "update 082025"
+git commit -m "update 082026"
 git push origin main
 
 test: bundle exec jekyll serve
