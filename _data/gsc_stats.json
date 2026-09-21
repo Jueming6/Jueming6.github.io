@@ -1,19 +1,19 @@
 {
-  "total_clicks": 1971,
-  "total_countries": 32,
-  "updated": "2026-09-14",
+  "total_clicks": 2026,
+  "total_countries": 33,
+  "updated": "2026-09-21",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1535
+      "clicks": 1576
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 168
+      "clicks": 173
     },
     {
       "name": "Japan",
@@ -25,13 +25,13 @@
       "name": "South Korea",
       "lat": 35.91,
       "lng": 127.77,
-      "clicks": 25
+      "clicks": 27
     },
     {
       "name": "Hong Kong",
       "lat": 22.32,
       "lng": 114.17,
-      "clicks": 22
+      "clicks": 25
     },
     {
       "name": "Pakistan",
@@ -52,16 +52,16 @@
       "clicks": 17
     },
     {
+      "name": "Nepal",
+      "lat": 28.39,
+      "lng": 84.12,
+      "clicks": 17
+    },
+    {
       "name": "Spain",
       "lat": 40.46,
       "lng": -3.75,
       "clicks": 16
-    },
-    {
-      "name": "Nepal",
-      "lat": 28.39,
-      "lng": 84.12,
-      "clicks": 14
     },
     {
       "name": "Australia",
@@ -163,6 +163,12 @@
       "name": "Italy",
       "lat": 41.87,
       "lng": 12.57,
+      "clicks": 1
+    },
+    {
+      "name": "Isle of Man",
+      "lat": 0.0,
+      "lng": 0.0,
       "clicks": 1
     },
     {
