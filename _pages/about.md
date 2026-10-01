@@ -160,40 +160,139 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 
 ---
 
-<div id="site-stats" style="margin: 1.5em 0;">
-  <h3 style="margin-bottom: 0.8em;">Visitor Stats <small style="font-weight:normal; color:#999; font-size:0.7em;">— Google Search clicks</small></h3>
-  <div style="display:flex; gap:2.5em; margin-bottom:1.2em; flex-wrap:wrap; align-items:baseline;">
-    <div><span id="stat-clicks" style="font-size:1.3em; font-weight:700; color:#c0392b;"></span><span style="font-size:0.85em; color:#777; margin-left:0.3em;">clicks</span></div>
-    <div><span id="stat-countries" style="font-size:1.3em; font-weight:700; color:#27ae60;"></span><span style="font-size:0.85em; color:#777; margin-left:0.3em;">countries</span></div>
+<div id="site-stats">
+  <h3 class="vs-title">Visitors <small>&mdash; Google Search clicks</small></h3>
+  <div class="vs-figures">
+    <div><span id="stat-clicks" class="vs-num vs-num--clicks"></span><span class="vs-unit">clicks</span></div>
+    <div><span id="stat-countries" class="vs-num vs-num--countries"></span><span class="vs-unit">countries</span></div>
   </div>
-  <div id="visitor-map" style="height:280px; border-radius:6px; margin-bottom:1.2em; border:1px solid #ddd;"></div>
-  <p id="stats-updated" style="font-size:0.72em; color:#bbb; margin:0;"></p>
+  <div id="visitor-map"></div>
+  <p id="vs-caption" class="vs-caption"></p>
+  <p id="stats-updated" class="vs-updated"></p>
 </div>
+
+<style>
+#site-stats{ margin:1.5em 0; --vs-ocean:#f2f6f9; --vs-land:#dfe6ed; --vs-land-line:#c2ccd7;
+  --vs-dot:#c0395b; --vs-dot-line:#8c2340; --vs-frame:#dde3e9; --vs-muted:#8a9099; }
+@media (prefers-color-scheme: dark){
+  #site-stats{ --vs-ocean:#15181c; --vs-land:#262b31; --vs-land-line:#363d45;
+    --vs-dot:#d45070; --vs-dot-line:#f0a0b4; --vs-frame:#2b3137; --vs-muted:#767c85; }
+}
+.vs-title{ margin-bottom:.6em; }
+.vs-title small{ font-weight:normal; color:var(--vs-muted); font-size:.7em; }
+.vs-figures{ display:flex; gap:2.5em; margin-bottom:1em; flex-wrap:wrap; align-items:baseline; }
+.vs-num{ font-size:1.45em; font-weight:700; font-variant-numeric:tabular-nums; }
+.vs-num--clicks{ color:#c0392b; } .vs-num--countries{ color:#27ae60; }
+@media (prefers-color-scheme: dark){ .vs-num--clicks{ color:#e8614d; } .vs-num--countries{ color:#3fbf78; } }
+.vs-unit{ font-size:.85em; color:var(--vs-muted); margin-left:.35em; }
+#visitor-map{ height:340px; border-radius:8px; border:1px solid var(--vs-frame);
+  background:var(--vs-ocean); overflow:hidden; }
+#visitor-map .leaflet-container{ background:var(--vs-ocean); }
+.vs-caption{ font-size:.8em; color:var(--vs-muted); margin:.7em 0 0; line-height:1.5; }
+.vs-updated{ font-size:.72em; color:var(--vs-muted); opacity:.75; margin:.35em 0 0; }
+.vs-tip{ background:rgba(255,255,255,.97); border:1px solid #c9d2da; color:#2b3137;
+  border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,.14); font-size:.8em; padding:4px 8px; }
+.vs-tip::before{ border-top-color:#c9d2da; }
+@media (prefers-color-scheme: dark){
+  .vs-tip{ background:rgba(32,36,41,.97); border-color:#434b54; color:#e3e7ea; }
+  .vs-tip::before{ border-top-color:#434b54; }
+}
+.vs-legend{ display:flex; align-items:flex-end; gap:.9em; margin:.8em 0 0; flex-wrap:wrap; }
+.vs-legend span{ font-size:.72em; color:var(--vs-muted); }
+.vs-legend i{ display:inline-block; border-radius:50%; background:var(--vs-dot);
+  border:1px solid var(--vs-dot-line); opacity:.62; vertical-align:bottom; }
+</style>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 var GSC = {{ site.data.gsc_stats | jsonify }};
 (function() {
-  document.getElementById('stat-clicks').textContent    = GSC.total_clicks;
-  document.getElementById('stat-countries').textContent = GSC.total_countries;
-  document.getElementById('stats-updated').textContent  = 'Source: Google Search Console \u00b7 updated ' + GSC.updated;
+  var R_MIN = 3.5, R_MAX = 20;
+
+  var all     = (GSC.countries || []);
+  // Entries the geocoder could not place land on Null Island (0,0); never draw them there.
+  var located = all.filter(function(c){ return c.lat || c.lng; });
+  var unmapped = all.length - located.length;
+  var unmappedClicks = all.reduce(function(s,c){ return s + (c.lat||c.lng ? 0 : c.clicks); }, 0);
+  var maxClicks = located.reduce(function(m,c){ return Math.max(m, c.clicks); }, 1);
+
+  // Area-proportional: radius scales with sqrt of clicks, normalised so the busiest
+  // country lands exactly on R_MAX. Without the normalisation a growing top country
+  // produces an unbounded radius that swallows the map.
+  function radiusFor(clicks){
+    return R_MIN + (R_MAX - R_MIN) * Math.sqrt(clicks / maxClicks);
+  }
+
+  document.getElementById('stat-clicks').textContent    = (GSC.total_clicks || 0).toLocaleString();
+  document.getElementById('stat-countries').textContent = GSC.total_countries || 0;
+  document.getElementById('stats-updated').textContent  =
+    'Source: Google Search Console + GoatCounter · updated ' + GSC.updated;
+
+  var cap = (GSC.total_clicks || 0).toLocaleString() + ' clicks recorded, mapped across ' +
+            located.length + ' countr' + (located.length === 1 ? 'y' : 'ies') + '.';
+  if (unmapped > 0) {
+    cap += ' ' + unmappedClicks + ' click' + (unmappedClicks === 1 ? '' : 's') + ' from ' +
+           unmapped + ' countr' + (unmapped === 1 ? 'y' : 'ies') +
+           ' could not be placed and are not shown.';
+  }
+  cap += ' Circle area is proportional to clicks. Hover a circle for the country and count.';
+  document.getElementById('vs-caption').textContent = cap;
 
   var map = L.map('visitor-map', {
-    center: [25, 10], zoom: 2,
-    scrollWheelZoom: false, attributionControl: true
+    minZoom: 1, maxZoom: 6,
+    scrollWheelZoom: false, attributionControl: false, preferCanvas: true
   });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> \u00a9 <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 19
-  }).addTo(map);
 
-  GSC.countries.forEach(function(c) {
+  // The basemap gets its own pane *below* the markers. Without this the country
+  // polygons paint over the circles and the largest ones vanish entirely.
+  map.createPane('vsBasemap');
+  map.getPane('vsBasemap').style.zIndex = 250;
+
+  var css = getComputedStyle(document.getElementById('site-stats'));
+  var v = function(n){ return css.getPropertyValue(n).trim(); };
+
+  // Frame the data rather than hard-coding a centre, so no country sits off-canvas.
+  var bounds = L.latLngBounds(located.map(function(c){ return [c.lat, c.lng]; }));
+  if (bounds.isValid()) { map.fitBounds(bounds, { padding: [34, 34], maxZoom: 4 }); }
+  else { map.setView([20, 0], 2); }
+
+  // Vector basemap served from this repo: no tile provider, no API key, no rate limit.
+  // (The previous CARTO tile URL now demands a key and stamped "API KEY REQUIRED"
+  // across every tile.)
+  fetch('{{ "/assets/world-110m.json" | relative_url }}')
+    .then(function(r){ return r.json(); })
+    .then(function(geo){
+      L.geoJSON(geo, {
+        interactive: false, pane: 'vsBasemap',
+        renderer: L.canvas({ pane: 'vsBasemap' }),
+        style: { fillColor:v('--vs-land'), fillOpacity:1, color:v('--vs-land-line'), weight:.6 }
+      }).addTo(map);
+    })
+    .catch(function(){ /* dots still render over the plain ocean background */ });
+
+  located.sort(function(a,b){ return b.clicks - a.clicks; })  // big circles first, small on top
+         .forEach(function(c) {
     L.circleMarker([c.lat, c.lng], {
-      radius: Math.max(5, Math.sqrt(c.clicks) * 4),
-      fillColor: "#e74c3c", color: "#922b21",
-      weight: 1, opacity: 0.85, fillOpacity: 0.55
-    }).bindTooltip("<b>" + c.name + "</b><br>" + c.clicks + " click" + (c.clicks !== 1 ? "s" : ""), { direction: "top" }).addTo(map);
+      radius: radiusFor(c.clicks),
+      fillColor: v('--vs-dot'), color: v('--vs-dot-line'),
+      weight: 1, opacity: .9, fillOpacity: .55
+    }).bindTooltip(
+      '<b>' + c.name + '</b><br>' + c.clicks.toLocaleString() +
+      ' click' + (c.clicks !== 1 ? 's' : ''),
+      { direction:'top', className:'vs-tip' }
+    ).addTo(map);
   });
+
+  // Size key, so the scale is readable rather than guessed at.
+  var ticks = [1, Math.round(maxClicks/10) || 1, maxClicks].filter(function(x,i,a){
+    return a.indexOf(x) === i;
+  });
+  document.getElementById('vs-caption').insertAdjacentHTML('afterend',
+    '<div class="vs-legend">' + ticks.map(function(t){
+      var d = Math.round(radiusFor(t) * 2);
+      return '<span><i style="width:' + d + 'px;height:' + d + 'px"></i> ' +
+             t.toLocaleString() + '</span>';
+    }).join('') + '</div>');
 })();
 </script>
