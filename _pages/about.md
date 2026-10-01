@@ -172,28 +172,29 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 </div>
 
 <style>
-/* Warm sand landmass against a cool tinted sea, with deep teal circles:
-   the warm/cool split does the land-vs-water work without a hard border. */
-#site-stats{ margin:1.5em 0; --vs-ocean:#edf3f4; --vs-land:#e5dfd3; --vs-land-line:#f4f0e7;
-  --vs-dot:#16697a; --vs-accent:#a9793f; --vs-muted:#7b7468;
-  --vs-btn:#fffdf9; --vs-btn-ink:#5c5445; --vs-btn-line:#e4ddcf; --vs-btn-hover:#f4efe4; }
+/* All blue, one hue family. The sea is transparent in both themes, so the
+   background is simply the page -- light or dark -- and the landmass is the
+   only fill. Circle blue #2878c4 sits beside the site link colour #52adc8. */
+#site-stats{ margin:1.5em 0; --vs-ocean:transparent; --vs-land:#e4ebf2; --vs-land-line:#f4f8fb;
+  --vs-dot:#2878c4; --vs-accent:#52adc8; --vs-muted:#76808c;
+  --vs-btn:#ffffff; --vs-btn-ink:#45566b; --vs-btn-line:#dde5ed; --vs-btn-hover:#eef4fa; }
 @media (prefers-color-scheme: dark){
-  #site-stats{ --vs-ocean:#191e21; --vs-land:#39342c; --vs-land-line:#2b2721;
-    --vs-dot:#4fb3c7; --vs-accent:#d0a567; --vs-muted:#8b857a;
-    --vs-btn:#262219; --vs-btn-ink:#cdc5b6; --vs-btn-line:#3b352b; --vs-btn-hover:#322d23; }
+  #site-stats{ --vs-land:#252c35; --vs-land-line:#1c222a;
+    --vs-dot:#5aa9ea; --vs-accent:#52adc8; --vs-muted:#848d99;
+    --vs-btn:#1e242b; --vs-btn-ink:#bcc7d4; --vs-btn-line:#2d353f; --vs-btn-hover:#28303a; }
 }
 .vs-title{ margin-bottom:.6em; }
 .vs-title small{ font-weight:normal; color:var(--vs-muted); font-size:.7em; }
 .vs-figures{ display:flex; gap:2.5em; margin-bottom:1em; flex-wrap:wrap; align-items:baseline; }
 .vs-num{ font-size:1.45em; font-weight:700; font-variant-numeric:tabular-nums; }
-/* Drawn from the map itself: teal of the circles, bronze of the landmass. */
+/* Both from the map's blue family: circle blue, then the site link blue. */
 .vs-num--clicks{ color:var(--vs-dot); } .vs-num--countries{ color:var(--vs-accent); }
 .vs-unit{ font-size:.85em; color:var(--vs-muted); margin-left:.35em; }
 #visitor-map{ height:360px; border-radius:10px; overflow:hidden; }
 #visitor-map, #visitor-map .leaflet-container{ background:var(--vs-ocean); }
 #visitor-map .leaflet-container{ outline:none; border-radius:10px; }
 /* Zoom buttons in the map's own palette rather than Leaflet's default blue-grey. */
-#visitor-map .leaflet-bar{ border:none; box-shadow:0 1px 4px rgba(60,50,35,.22); }
+#visitor-map .leaflet-bar{ border:none; box-shadow:0 1px 4px rgba(30,50,75,.2); }
 #visitor-map .leaflet-bar a{ background:var(--vs-btn); color:var(--vs-btn-ink);
   border-bottom-color:var(--vs-btn-line); width:26px; height:26px; line-height:26px;
   font-size:1.05em; }
@@ -201,12 +202,12 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 #visitor-map .leaflet-bar a.leaflet-disabled{ background:var(--vs-btn); opacity:.45; }
 .vs-caption{ font-size:.8em; color:var(--vs-muted); margin:.7em 0 0; line-height:1.5; }
 .vs-updated{ font-size:.72em; color:var(--vs-muted); opacity:.75; margin:.35em 0 0; }
-.vs-tip{ background:#fffdf9; border:1px solid #ddd5c6; color:#3a352c; border-radius:3px;
-  box-shadow:0 2px 6px rgba(60,50,35,.16); font-size:.8em; padding:5px 9px; font-weight:400; }
-.vs-tip::before{ border-top-color:#ddd5c6; }
+.vs-tip{ background:#fff; border:1px solid #d6e0ea; color:#2f3a46; border-radius:3px;
+  box-shadow:0 2px 6px rgba(30,50,75,.15); font-size:.8em; padding:5px 9px; font-weight:400; }
+.vs-tip::before{ border-top-color:#d6e0ea; }
 @media (prefers-color-scheme: dark){
-  .vs-tip{ background:#24211b; border-color:#443e33; color:#ece7dd; }
-  .vs-tip::before{ border-top-color:#443e33; }
+  .vs-tip{ background:#1e242b; border-color:#36404b; color:#e4eaf0; }
+  .vs-tip::before{ border-top-color:#36404b; }
 }
 .vs-legend{ display:flex; align-items:flex-end; gap:.9em; margin:.8em 0 0; flex-wrap:wrap; }
 .vs-legend span{ font-size:.72em; color:var(--vs-muted); }
