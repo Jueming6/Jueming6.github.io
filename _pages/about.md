@@ -172,35 +172,38 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 </div>
 
 <style>
-#site-stats{ margin:1.5em 0; --vs-ocean:#f2f6f9; --vs-land:#dfe6ed; --vs-land-line:#c2ccd7;
-  --vs-dot:#c0395b; --vs-dot-line:#8c2340; --vs-frame:#dde3e9; --vs-muted:#8a9099; }
+/* Palette sampled from the reference design: land #d9e2e9, dots #9f2e5f at 50%
+   fill (that blend over the land is the reference's #bc88a4), ocean left
+   transparent so the page colour carries through instead of a framed panel. */
+#site-stats{ margin:1.5em 0; --vs-ocean:transparent; --vs-land:#d9e2e9; --vs-land-line:#eef3f7;
+  --vs-dot:#9f2e5f; --vs-muted:#6b7a89; }
 @media (prefers-color-scheme: dark){
-  #site-stats{ --vs-ocean:#15181c; --vs-land:#262b31; --vs-land-line:#363d45;
-    --vs-dot:#d45070; --vs-dot-line:#f0a0b4; --vs-frame:#2b3137; --vs-muted:#767c85; }
+  #site-stats{ --vs-land:#2c343d; --vs-land-line:#232a31; --vs-dot:#d4487c; --vs-muted:#7c8794; }
 }
 .vs-title{ margin-bottom:.6em; }
 .vs-title small{ font-weight:normal; color:var(--vs-muted); font-size:.7em; }
 .vs-figures{ display:flex; gap:2.5em; margin-bottom:1em; flex-wrap:wrap; align-items:baseline; }
 .vs-num{ font-size:1.45em; font-weight:700; font-variant-numeric:tabular-nums; }
-.vs-num--clicks{ color:#c0392b; } .vs-num--countries{ color:#27ae60; }
-@media (prefers-color-scheme: dark){ .vs-num--clicks{ color:#e8614d; } .vs-num--countries{ color:#3fbf78; } }
+/* Drawn from the map itself: magenta of the circles, slate of the landmass. */
+.vs-num--clicks{ color:var(--vs-dot); } .vs-num--countries{ color:#44637f; }
+@media (prefers-color-scheme: dark){ .vs-num--countries{ color:#7fa3c2; } }
 .vs-unit{ font-size:.85em; color:var(--vs-muted); margin-left:.35em; }
-#visitor-map{ height:340px; border-radius:8px; border:1px solid var(--vs-frame);
-  background:var(--vs-ocean); overflow:hidden; }
-#visitor-map .leaflet-container{ background:var(--vs-ocean); }
+#visitor-map{ height:360px; background:var(--vs-ocean); }
+#visitor-map, #visitor-map .leaflet-container{ background:var(--vs-ocean); }
+#visitor-map .leaflet-container{ cursor:default; outline:none; }
 .vs-caption{ font-size:.8em; color:var(--vs-muted); margin:.7em 0 0; line-height:1.5; }
 .vs-updated{ font-size:.72em; color:var(--vs-muted); opacity:.75; margin:.35em 0 0; }
-.vs-tip{ background:rgba(255,255,255,.97); border:1px solid #c9d2da; color:#2b3137;
-  border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,.14); font-size:.8em; padding:4px 8px; }
-.vs-tip::before{ border-top-color:#c9d2da; }
+.vs-tip{ background:#fff; border:1px solid #cdd6de; color:#2b3137; border-radius:3px;
+  box-shadow:0 2px 6px rgba(31,45,61,.16); font-size:.8em; padding:5px 9px; font-weight:400; }
+.vs-tip::before{ border-top-color:#cdd6de; }
 @media (prefers-color-scheme: dark){
-  .vs-tip{ background:rgba(32,36,41,.97); border-color:#434b54; color:#e3e7ea; }
-  .vs-tip::before{ border-top-color:#434b54; }
+  .vs-tip{ background:#20242a; border-color:#3d454e; color:#e3e7ea; }
+  .vs-tip::before{ border-top-color:#3d454e; }
 }
 .vs-legend{ display:flex; align-items:flex-end; gap:.9em; margin:.8em 0 0; flex-wrap:wrap; }
 .vs-legend span{ font-size:.72em; color:var(--vs-muted); }
 .vs-legend i{ display:inline-block; border-radius:50%; background:var(--vs-dot);
-  border:1px solid var(--vs-dot-line); opacity:.62; vertical-align:bottom; }
+  border:1px solid var(--vs-dot); opacity:.5; vertical-align:bottom; }
 </style>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
@@ -240,8 +243,9 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
   document.getElementById('vs-caption').textContent = cap;
 
   var map = L.map('visitor-map', {
-    minZoom: 1, maxZoom: 6,
-    scrollWheelZoom: false, attributionControl: false, preferCanvas: true
+    zoomControl: false, attributionControl: false, preferCanvas: true,
+    dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
+    boxZoom: false, keyboard: false, touchZoom: false, zoomSnap: 0
   });
 
   // The basemap gets its own pane *below* the markers. Without this the country
@@ -275,8 +279,8 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
          .forEach(function(c) {
     L.circleMarker([c.lat, c.lng], {
       radius: radiusFor(c.clicks),
-      fillColor: v('--vs-dot'), color: v('--vs-dot-line'),
-      weight: 1, opacity: .9, fillOpacity: .55
+      fillColor: v('--vs-dot'), color: v('--vs-dot'),
+      weight: 1, opacity: 1, fillOpacity: .5
     }).bindTooltip(
       '<b>' + c.name + '</b><br>' + c.clicks.toLocaleString() +
       ' click' + (c.clicks !== 1 ? 's' : ''),
