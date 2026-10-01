@@ -172,38 +172,37 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 </div>
 
 <style>
-/* Palette sampled from the reference design: land #d9e2e9, dots #9f2e5f at 50%
-   fill (that blend over the land is the reference's #bc88a4), ocean left
-   transparent so the page colour carries through instead of a framed panel. */
-#site-stats{ margin:1.5em 0; --vs-ocean:transparent; --vs-land:#d9e2e9; --vs-land-line:#eef3f7;
-  --vs-dot:#9f2e5f; --vs-muted:#6b7a89; }
+/* Warm sand landmass against a cool tinted sea, with deep teal circles:
+   the warm/cool split does the land-vs-water work without a hard border. */
+#site-stats{ margin:1.5em 0; --vs-ocean:#edf3f4; --vs-land:#e5dfd3; --vs-land-line:#f4f0e7;
+  --vs-dot:#16697a; --vs-accent:#a9793f; --vs-muted:#7b7468; }
 @media (prefers-color-scheme: dark){
-  #site-stats{ --vs-land:#2c343d; --vs-land-line:#232a31; --vs-dot:#d4487c; --vs-muted:#7c8794; }
+  #site-stats{ --vs-ocean:#191e21; --vs-land:#39342c; --vs-land-line:#2b2721;
+    --vs-dot:#4fb3c7; --vs-accent:#d0a567; --vs-muted:#8b857a; }
 }
 .vs-title{ margin-bottom:.6em; }
 .vs-title small{ font-weight:normal; color:var(--vs-muted); font-size:.7em; }
 .vs-figures{ display:flex; gap:2.5em; margin-bottom:1em; flex-wrap:wrap; align-items:baseline; }
 .vs-num{ font-size:1.45em; font-weight:700; font-variant-numeric:tabular-nums; }
-/* Drawn from the map itself: magenta of the circles, slate of the landmass. */
-.vs-num--clicks{ color:var(--vs-dot); } .vs-num--countries{ color:#44637f; }
-@media (prefers-color-scheme: dark){ .vs-num--countries{ color:#7fa3c2; } }
+/* Drawn from the map itself: teal of the circles, bronze of the landmass. */
+.vs-num--clicks{ color:var(--vs-dot); } .vs-num--countries{ color:var(--vs-accent); }
 .vs-unit{ font-size:.85em; color:var(--vs-muted); margin-left:.35em; }
-#visitor-map{ height:360px; background:var(--vs-ocean); }
+#visitor-map{ height:360px; border-radius:10px; overflow:hidden; }
 #visitor-map, #visitor-map .leaflet-container{ background:var(--vs-ocean); }
-#visitor-map .leaflet-container{ cursor:default; outline:none; }
+#visitor-map .leaflet-container{ cursor:default; outline:none; border-radius:10px; }
 .vs-caption{ font-size:.8em; color:var(--vs-muted); margin:.7em 0 0; line-height:1.5; }
 .vs-updated{ font-size:.72em; color:var(--vs-muted); opacity:.75; margin:.35em 0 0; }
-.vs-tip{ background:#fff; border:1px solid #cdd6de; color:#2b3137; border-radius:3px;
-  box-shadow:0 2px 6px rgba(31,45,61,.16); font-size:.8em; padding:5px 9px; font-weight:400; }
-.vs-tip::before{ border-top-color:#cdd6de; }
+.vs-tip{ background:#fffdf9; border:1px solid #ddd5c6; color:#3a352c; border-radius:3px;
+  box-shadow:0 2px 6px rgba(60,50,35,.16); font-size:.8em; padding:5px 9px; font-weight:400; }
+.vs-tip::before{ border-top-color:#ddd5c6; }
 @media (prefers-color-scheme: dark){
-  .vs-tip{ background:#20242a; border-color:#3d454e; color:#e3e7ea; }
-  .vs-tip::before{ border-top-color:#3d454e; }
+  .vs-tip{ background:#24211b; border-color:#443e33; color:#ece7dd; }
+  .vs-tip::before{ border-top-color:#443e33; }
 }
 .vs-legend{ display:flex; align-items:flex-end; gap:.9em; margin:.8em 0 0; flex-wrap:wrap; }
 .vs-legend span{ font-size:.72em; color:var(--vs-muted); }
 .vs-legend i{ display:inline-block; border-radius:50%; background:var(--vs-dot);
-  border:1px solid var(--vs-dot); opacity:.5; vertical-align:bottom; }
+  border:1px solid var(--vs-dot); opacity:.6; vertical-align:bottom; }
 </style>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
@@ -280,7 +279,7 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
     L.circleMarker([c.lat, c.lng], {
       radius: radiusFor(c.clicks),
       fillColor: v('--vs-dot'), color: v('--vs-dot'),
-      weight: 1, opacity: 1, fillOpacity: .5
+      weight: 1.2, opacity: 1, fillOpacity: .6
     }).bindTooltip(
       '<b>' + c.name + '</b><br>' + c.clicks.toLocaleString() +
       ' click' + (c.clicks !== 1 ? 's' : ''),
