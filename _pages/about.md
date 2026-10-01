@@ -223,15 +223,15 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
   var R_MIN = 3.5, R_MAX = 20;
 
   var all     = (GSC.countries || []);
-  // Entries the geocoder could not place land on Null Island (0,0); never draw them there.
+  /* Entries the geocoder could not place land on Null Island (0,0); never draw them there. */
   var located = all.filter(function(c){ return c.lat || c.lng; });
   var unmapped = all.length - located.length;
   var unmappedClicks = all.reduce(function(s,c){ return s + (c.lat||c.lng ? 0 : c.clicks); }, 0);
   var maxClicks = located.reduce(function(m,c){ return Math.max(m, c.clicks); }, 1);
 
-  // Area-proportional: radius scales with sqrt of clicks, normalised so the busiest
-  // country lands exactly on R_MAX. Without the normalisation a growing top country
-  // produces an unbounded radius that swallows the map.
+  /* Area-proportional: radius scales with sqrt of clicks, normalised so the busiest
+     country lands exactly on R_MAX. Without the normalisation a growing top country
+     produces an unbounded radius that swallows the map. */
   function radiusFor(clicks){
     return R_MIN + (R_MAX - R_MIN) * Math.sqrt(clicks / maxClicks);
   }
@@ -246,7 +246,7 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
   if (unmapped > 0) {
     cap += ' ' + unmappedClicks + ' click' + (unmappedClicks === 1 ? '' : 's') + ' from ' +
            unmapped + ' countr' + (unmapped === 1 ? 'y' : 'ies') +
-           ' could not be placed and are not shown.';
+           ' could not be placed and ' + (unmappedClicks === 1 ? 'is' : 'are') + ' not shown.';
   }
   cap += ' Circle area is proportional to clicks. Hover a circle for the country and count;' +
          ' drag to pan, and zoom with the + and \u2212 buttons.';
@@ -255,29 +255,29 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
   var map = L.map('visitor-map', {
     zoomControl: true, attributionControl: false, preferCanvas: true,
     minZoom: 1, maxZoom: 7, zoomSnap: 0,
-    // Wheel stays off so scrolling the page never gets captured by the map;
-    // the +/- buttons, drag, double-click and pinch all work.
+    /* Wheel stays off so scrolling the page never gets captured by the map;
+       the +/- buttons, drag, double-click and pinch all work. */
     scrollWheelZoom: false,
     maxBounds: L.latLngBounds([-85, -180], [85, 180]), maxBoundsViscosity: 0.7
   });
   map.zoomControl.setPosition('topright');
 
-  // The basemap gets its own pane *below* the markers. Without this the country
-  // polygons paint over the circles and the largest ones vanish entirely.
+  /* The basemap gets its own pane *below* the markers. Without this the country
+     polygons paint over the circles and the largest ones vanish entirely. */
   map.createPane('vsBasemap');
   map.getPane('vsBasemap').style.zIndex = 250;
 
   var css = getComputedStyle(document.getElementById('site-stats'));
   var v = function(n){ return css.getPropertyValue(n).trim(); };
 
-  // Frame the data rather than hard-coding a centre, so no country sits off-canvas.
+  /* Frame the data rather than hard-coding a centre, so no country sits off-canvas. */
   var bounds = L.latLngBounds(located.map(function(c){ return [c.lat, c.lng]; }));
   if (bounds.isValid()) { map.fitBounds(bounds, { padding: [34, 34], maxZoom: 4 }); }
   else { map.setView([20, 0], 2); }
 
-  // Vector basemap served from this repo: no tile provider, no API key, no rate limit.
-  // (The previous CARTO tile URL now demands a key and stamped "API KEY REQUIRED"
-  // across every tile.)
+  /* Vector basemap served from this repo: no tile provider, no API key, no rate limit.
+     (The previous CARTO tile URL now demands a key and stamped "API KEY REQUIRED"
+     across every tile.) */
   fetch('{{ "/assets/world-110m.json" | relative_url }}')
     .then(function(r){ return r.json(); })
     .then(function(geo){
@@ -289,7 +289,7 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
     })
     .catch(function(){ /* dots still render over the plain ocean background */ });
 
-  located.sort(function(a,b){ return b.clicks - a.clicks; })  // big circles first, small on top
+  located.sort(function(a,b){ return b.clicks - a.clicks; })  /* big circles first, small on top */
          .forEach(function(c) {
     L.circleMarker([c.lat, c.lng], {
       radius: radiusFor(c.clicks),
@@ -302,7 +302,7 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
     ).addTo(map);
   });
 
-  // Size key, so the scale is readable rather than guessed at.
+  /* Size key, so the scale is readable rather than guessed at. */
   var ticks = [1, Math.round(maxClicks/10) || 1, maxClicks].filter(function(x,i,a){
     return a.indexOf(x) === i;
   });
