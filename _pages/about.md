@@ -175,10 +175,12 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 /* Warm sand landmass against a cool tinted sea, with deep teal circles:
    the warm/cool split does the land-vs-water work without a hard border. */
 #site-stats{ margin:1.5em 0; --vs-ocean:#edf3f4; --vs-land:#e5dfd3; --vs-land-line:#f4f0e7;
-  --vs-dot:#16697a; --vs-accent:#a9793f; --vs-muted:#7b7468; }
+  --vs-dot:#16697a; --vs-accent:#a9793f; --vs-muted:#7b7468;
+  --vs-btn:#fffdf9; --vs-btn-ink:#5c5445; --vs-btn-line:#e4ddcf; --vs-btn-hover:#f4efe4; }
 @media (prefers-color-scheme: dark){
   #site-stats{ --vs-ocean:#191e21; --vs-land:#39342c; --vs-land-line:#2b2721;
-    --vs-dot:#4fb3c7; --vs-accent:#d0a567; --vs-muted:#8b857a; }
+    --vs-dot:#4fb3c7; --vs-accent:#d0a567; --vs-muted:#8b857a;
+    --vs-btn:#262219; --vs-btn-ink:#cdc5b6; --vs-btn-line:#3b352b; --vs-btn-hover:#322d23; }
 }
 .vs-title{ margin-bottom:.6em; }
 .vs-title small{ font-weight:normal; color:var(--vs-muted); font-size:.7em; }
@@ -189,7 +191,14 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
 .vs-unit{ font-size:.85em; color:var(--vs-muted); margin-left:.35em; }
 #visitor-map{ height:360px; border-radius:10px; overflow:hidden; }
 #visitor-map, #visitor-map .leaflet-container{ background:var(--vs-ocean); }
-#visitor-map .leaflet-container{ cursor:default; outline:none; border-radius:10px; }
+#visitor-map .leaflet-container{ outline:none; border-radius:10px; }
+/* Zoom buttons in the map's own palette rather than Leaflet's default blue-grey. */
+#visitor-map .leaflet-bar{ border:none; box-shadow:0 1px 4px rgba(60,50,35,.22); }
+#visitor-map .leaflet-bar a{ background:var(--vs-btn); color:var(--vs-btn-ink);
+  border-bottom-color:var(--vs-btn-line); width:26px; height:26px; line-height:26px;
+  font-size:1.05em; }
+#visitor-map .leaflet-bar a:hover{ background:var(--vs-btn-hover); color:var(--vs-dot); }
+#visitor-map .leaflet-bar a.leaflet-disabled{ background:var(--vs-btn); opacity:.45; }
 .vs-caption{ font-size:.8em; color:var(--vs-muted); margin:.7em 0 0; line-height:1.5; }
 .vs-updated{ font-size:.72em; color:var(--vs-muted); opacity:.75; margin:.35em 0 0; }
 .vs-tip{ background:#fffdf9; border:1px solid #ddd5c6; color:#3a352c; border-radius:3px;
@@ -238,14 +247,19 @@ var GSC = {{ site.data.gsc_stats | jsonify }};
            unmapped + ' countr' + (unmapped === 1 ? 'y' : 'ies') +
            ' could not be placed and are not shown.';
   }
-  cap += ' Circle area is proportional to clicks. Hover a circle for the country and count.';
+  cap += ' Circle area is proportional to clicks. Hover a circle for the country and count;' +
+         ' drag to pan, and zoom with the + and \u2212 buttons.';
   document.getElementById('vs-caption').textContent = cap;
 
   var map = L.map('visitor-map', {
-    zoomControl: false, attributionControl: false, preferCanvas: true,
-    dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
-    boxZoom: false, keyboard: false, touchZoom: false, zoomSnap: 0
+    zoomControl: true, attributionControl: false, preferCanvas: true,
+    minZoom: 1, maxZoom: 7, zoomSnap: 0,
+    // Wheel stays off so scrolling the page never gets captured by the map;
+    // the +/- buttons, drag, double-click and pinch all work.
+    scrollWheelZoom: false,
+    maxBounds: L.latLngBounds([-85, -180], [85, 180]), maxBoundsViscosity: 0.7
   });
+  map.zoomControl.setPosition('topright');
 
   // The basemap gets its own pane *below* the markers. Without this the country
   // polygons paint over the circles and the largest ones vanish entirely.
