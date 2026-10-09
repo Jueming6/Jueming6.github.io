@@ -34,7 +34,7 @@ The SLAM Lab develops and tests its own aerial and ground platforms.
 </figure>
 
 <figure class="fac">
-  <video controls playsinline preload="metadata">
+  <video controls muted playsinline preload="metadata">
     <source src="ground-demo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
