@@ -1,19 +1,19 @@
 {
-  "total_clicks": 2175,
+  "total_clicks": 2234,
   "total_countries": 33,
-  "updated": "2026-10-05",
+  "updated": "2026-10-12",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1692
+      "clicks": 1736
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 188
+      "clicks": 195
     },
     {
       "name": "Japan",
@@ -25,7 +25,7 @@
       "name": "South Korea",
       "lat": 35.91,
       "lng": 127.77,
-      "clicks": 32
+      "clicks": 37
     },
     {
       "name": "Pakistan",
@@ -40,6 +40,12 @@
       "clicks": 25
     },
     {
+      "name": "Nepal",
+      "lat": 28.39,
+      "lng": 84.12,
+      "clicks": 20
+    },
+    {
       "name": "Singapore",
       "lat": 1.35,
       "lng": 103.82,
@@ -50,12 +56,6 @@
       "lat": 20.59,
       "lng": 78.96,
       "clicks": 18
-    },
-    {
-      "name": "Nepal",
-      "lat": 28.39,
-      "lng": 84.12,
-      "clicks": 17
     },
     {
       "name": "Spain",
