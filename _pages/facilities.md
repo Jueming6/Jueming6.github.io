@@ -26,15 +26,14 @@ The SLAM Lab develops and tests its own aerial and ground platforms.
 </figure>
 
 <figure class="fac">
-  <video controls loop muted autoplay playsinline preload="metadata">
-    <source src="slam-uav-demo1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <video autoplay muted loop playsinline controls preload="metadata" style="max-width:100%">
+  <source src="slam-uav-demo2-web.mp4" type="video/mp4">
+</video>
   <figcaption>Quadrotor flight test inside the OU Drone Dome.</figcaption>
 </figure>
 
 <figure class="fac">
-  <video controls muted playsinline preload="metadata">
+  <video autoplay muted loop playsinline controls preload="metadata">
     <source src="ground-demo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>

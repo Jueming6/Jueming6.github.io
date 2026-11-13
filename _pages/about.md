@@ -23,6 +23,10 @@ I am an assistant professor in the <a href="https://www.ou.edu/coe/ame">School o
   <div class="tl-year">2026</div>
   <ul class="tl start-top">
   <li>
+      <div class="desc">SLAM Lab member Sajan Bhujel received an <strong>AME STAR-D/CAMRT Research Award</strong> from <em>OU</em>, supported by <a href="https://www.ou.edu/research-norman/centers-institutes/cross-cutting-foundations/art-translational-research">NSF ART: InTRO</a>!</div>
+      <div class="month">November</div>
+    </li> 
+  <li>
       <div class="desc">Dr. Hu joined the <a href="https://www.ou.edu/coe/ame">School of Aerospace and Mechanical Engineering</a> at the <a href="https://www.ou.edu/">University of Oklahoma</a> as an assistant professor! The SLAM Lab has also relocated to OU.</div>
       <div class="month">August</div>
     </li> 
