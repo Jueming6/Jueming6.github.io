@@ -1,25 +1,25 @@
 {
-  "total_clicks": 2499,
+  "total_clicks": 2590,
   "total_countries": 33,
-  "updated": "2026-11-09",
+  "updated": "2026-11-16",
   "countries": [
     {
       "name": "United States",
       "lat": 37.09,
       "lng": -95.71,
-      "clicks": 1910
+      "clicks": 1969
     },
     {
       "name": "Bangladesh",
       "lat": 23.68,
       "lng": 90.36,
-      "clicks": 230
+      "clicks": 248
     },
     {
       "name": "Japan",
       "lat": 36.2,
       "lng": 138.25,
-      "clicks": 75
+      "clicks": 76
     },
     {
       "name": "South Korea",
@@ -34,16 +34,16 @@
       "clicks": 36
     },
     {
-      "name": "Hong Kong",
-      "lat": 22.32,
-      "lng": 114.17,
-      "clicks": 25
-    },
-    {
       "name": "Nepal",
       "lat": 28.39,
       "lng": 84.12,
-      "clicks": 23
+      "clicks": 30
+    },
+    {
+      "name": "Hong Kong",
+      "lat": 22.32,
+      "lng": 114.17,
+      "clicks": 27
     },
     {
       "name": "Singapore",
@@ -74,6 +74,12 @@
       "lat": 56.13,
       "lng": -106.35,
       "clicks": 10
+    },
+    {
+      "name": "Nigeria",
+      "lat": 9.08,
+      "lng": 8.68,
+      "clicks": 9
     },
     {
       "name": "Jordan",
@@ -109,12 +115,6 @@
       "name": "France",
       "lat": 46.23,
       "lng": 2.21,
-      "clicks": 5
-    },
-    {
-      "name": "Nigeria",
-      "lat": 9.08,
-      "lng": 8.68,
       "clicks": 5
     },
     {
